@@ -3,6 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import VueLazyLoad from "vue-lazyload"
 // import VueCookie from "vue-cookie";
 import store from "./store";
 import { Message } from 'element-ui'
@@ -28,6 +29,9 @@ axios.interceptors.response.use(function (response) {
 // require('axios');
 // Vue.prototype.$axios = axios;
 Vue.use(VueAxios,axios);
+Vue.use(VueLazyLoad,{
+  loading:"./assets/loading-svg/loading-cylon.svg"
+})
 // Vue.use(VueCookie);
 Vue.prototype.$message = Message;
 Vue.config.productionTip = false;

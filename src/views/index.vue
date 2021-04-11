@@ -24,7 +24,7 @@
             <div class="banner-item">
               <div class="banner-img">
                 <a href="javascript:void(0)">
-                  <img src="/images/banner/5-1.jpg" alt="Quicky's Banner" />
+                  <img v-lazy="'/images/banner/5-1.jpg'" alt="Quicky's Banner" />
                 </a>
               </div>
             </div>
@@ -35,7 +35,7 @@
                 <div class="banner-item">
                   <div class="banner-img">
                     <a href="javascript:void(0)">
-                      <img src="/images/banner/5-2.jpg" alt="Quicky's Banner" />
+                      <img v-lazy="'/images/banner/5-2.jpg'" alt="Quicky's Banner" />
                     </a>
                   </div>
                 </div>
@@ -44,7 +44,7 @@
                 <div class="banner-item">
                   <div class="banner-img">
                     <a href="javascript:void(0)">
-                      <img src="/images/banner/5-3.jpg" alt="Quicky's Banner" />
+                      <img v-lazy="'/images/banner/5-3.jpg'" alt="Quicky's Banner" />
                     </a>
                   </div>
                 </div>
@@ -55,7 +55,7 @@
                 <div class="banner-item">
                   <div class="banner-img">
                     <a href="javascript:void(0)">
-                      <img src="/images/banner/5-4.jpg" alt="Quicky's Banner" />
+                      <img v-lazy="'/images/banner/5-4.jpg'" alt="Quicky's Banner" />
                     </a>
                   </div>
                 </div>
@@ -64,7 +64,7 @@
                 <div class="banner-item">
                   <div class="banner-img">
                     <a href="javascript:void(0)">
-                      <img src="/images/banner/5-5.jpg" alt="Quicky's Banner" />
+                      <img v-lazy="'/images/banner/5-5.jpg'" alt="Quicky's Banner" />
                     </a>
                   </div>
                 </div>
