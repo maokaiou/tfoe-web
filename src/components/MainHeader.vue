@@ -223,19 +223,22 @@
                       <i class="zmdi zmdi-account-o"></i>
                     </a>
                     <ul class="quicky-dropdown">
-                      <li class="position-relative"  v-if="this.$store.state.info.userName!==undefined">
+                       <li class="position-relative"  v-if="username">
+                        <a href="/message">{{username}}</a>
+                      </li>
+                      <li class="position-relative"  v-if="username">
                         <a href="/message">我的消息</a>
                       </li>
-                      <li class="position-relative"  v-if="this.$store.state.info.userName!==undefined">
+                      <li class="position-relative" v-if="username">
                         <a href="/myaccount">我的账户</a>
                       </li>
-                      <li class="position-relative" v-if="this.$store.state.info.userName===undefined">
+                      <li class="position-relative" v-if="!username">
                         <a href="/login">登录</a>
                       </li>
-                      <li class="position-relative"  v-if="this.$store.state.info.userName===undefined">
+                      <li class="position-relative"  v-if="!username">
                         <a href="/register">注册</a>
                       </li>
-                      <li class="position-relative"  v-if="this.$store.state.info.userName!==undefined">
+                      <li class="position-relative" v-if="username">
                         <a href="javascript:void(0)" @click="logout">登出</a>
                       </li>
                     </ul>
@@ -247,7 +250,7 @@
         </div>
       </div>
     </div>
-    <!-- 购物车 -->
+    <!-- 购物车弹出框 -->
     <div
       :class="
         this.openCartData
@@ -308,418 +311,6 @@
         </div>
       </div>
     </div>
-    <div class="mobile-menu_wrapper" id="mobileMenu">
-      <div class="offcanvas-menu-inner">
-        <div class="container">
-          <a href="#" class="btn-close white-close_btn"
-            ><i class="zmdi zmdi-close"></i
-          ></a>
-          <div class="offcanvas-inner_logo">
-            <a href="index.html">
-              <img src="/images/menu/logo/1.png" alt="Header Logo" />
-            </a>
-          </div>
-          <nav class="offcanvas-navigation">
-            <ul class="mobile-menu">
-              <li class="menu-item-has-children active">
-                <a href="#"><span class="mm-text">首页</span></a>
-                <ul class="sub-menu">
-                  <li>
-                    <a href="index.html">
-                      <span class="mm-text">首页 One</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="index-2.html">
-                      <span class="mm-text">首页 Two</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="index-3.html">
-                      <span class="mm-text">首页 Three</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="index-4.html">
-                      <span class="mm-text">首页 Four</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="index-5.html">
-                      <span class="mm-text">首页 Five</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="index-6.html">
-                      <span class="mm-text">首页 Six</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="menu-item-has-children">
-                <a href="#">
-                  <span class="mm-text">商店</span>
-                </a>
-                <ul class="sub-menu">
-                  <li class="menu-item-has-children">
-                    <a href="#">
-                      <span class="mm-text">Grid View</span>
-                    </a>
-                    <ul class="sub-menu">
-                      <li>
-                        <a href="shop-fullwidth.html">
-                          <span class="mm-text">Grid Fullwidth</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="shop-left-sidebar.html">
-                          <span class="mm-text">Left Sidebar</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="shop-right-sidebar.html">
-                          <span class="mm-text">Right Sidebar</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="menu-item-has-children">
-                    <a href="#">
-                      <span class="mm-text">Shop List</span>
-                    </a>
-                    <ul class="sub-menu">
-                      <li>
-                        <a href="shop-list-fullwidth.html">
-                          <span class="mm-text">Full Width</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="shop-list-left-sidebar.html">
-                          <span class="mm-text">Left Sidebar</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="shop-list-right-sidebar.html">
-                          <span class="mm-text">Right Sidebar</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="menu-item-has-children">
-                    <a href="#">
-                      <span class="mm-text">Single Product Style</span>
-                    </a>
-                    <ul class="sub-menu">
-                      <li>
-                        <a href="single-product-gallery-left.html">
-                          <span class="mm-text">Gallery Left</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="single-product-gallery-right.html">
-                          <span class="mm-text">Gallery Right</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="single-product-tab-style-left.html">
-                          <span class="mm-text">Tab Style Left</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="single-product-tab-style-right.html">
-                          <span class="mm-text">Tab Style Right</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="single-product-sticky-left.html">
-                          <span class="mm-text">Sticky Left</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="single-product-sticky-right.html">
-                          <span class="mm-text">Sticky Right</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="menu-item-has-children">
-                    <a href="#">
-                      <span class="mm-text">Single Product Type</span>
-                    </a>
-                    <ul class="sub-menu">
-                      <li>
-                        <a href="single-product.html">
-                          <span class="mm-text">Single Product</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="single-product-sale.html">
-                          <span class="mm-text">Single Product Sale</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="single-product-group.html">
-                          <span class="mm-text">Single Product Group</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="single-product-variable.html">
-                          <span class="mm-text">Single Product Variable</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="single-product-affiliate.html">
-                          <span class="mm-text">Single Product Affiliate</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="single-product-slider.html">
-                          <span class="mm-text">Single Product Slider</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-              <li class="menu-item-has-children">
-                <a href="#">
-                  <span class="mm-text">博客</span>
-                </a>
-                <ul class="sub-menu">
-                  <li class="menu-item-has-children has-children">
-                    <a href="blog-left-sidebar.html">
-                      <span class="mm-text">Grid View</span>
-                    </a>
-                  </li>
-                  <li class="menu-item-has-children has-children">
-                    <a href="blog-list-left-sidebar.html">
-                      <span class="mm-text">List View</span>
-                    </a>
-                  </li>
-                  <li class="menu-item-has-children has-children">
-                    <a href="blog-details.html">
-                      <span class="mm-text">Blog Details</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="menu-item-has-children">
-                <a href="#">
-                  <span class="mm-text">页面</span>
-                </a>
-                <ul class="sub-menu">
-                  <li>
-                    <a href="my-account.html">
-                      <span class="mm-text">关于我们</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="my-account.html">
-                      <span class="mm-text">联系</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="my-account.html">
-                      <span class="mm-text">我的账户</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="login-register.html">
-                      <span class="mm-text">登录或注册</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="wishlist.html">
-                      <span class="mm-text">Wishlist</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="cart.html">
-                      <span class="mm-text">购物车</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="checkout.html">
-                      <span class="mm-text">Checkout</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="compare.html">
-                      <span class="mm-text">Compare</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="faq.html">
-                      <span class="mm-text">FAQ</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="error-404.html">
-                      <span class="mm-text">Error 404</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </nav>
-          <nav class="offcanvas-navigation user-setting_area">
-            <ul class="mobile-menu">
-              <li class="menu-item-has-children active">
-                <a href="#">
-                  <span class="mm-text">User Setting </span>
-                </a>
-                <ul class="sub-menu">
-                  <li>
-                    <a href="my-account.html">
-                      <span class="mm-text">我的账户</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="login-register.html">
-                      <span class="mm-text">登录或注册</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="menu-item-has-children">
-                <a href="#"><span class="mm-text">货币</span></a>
-                <ul class="sub-menu">
-                  <li>
-                    <a href="javascript:void(0)">
-                      <span class="mm-text">EUR €</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:void(0)">
-                      <span class="mm-text">USD ￥</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="menu-item-has-children">
-                <a href="#"><span class="mm-text">语言</span></a>
-                <ul class="sub-menu">
-                  <li>
-                    <a href="javascript:void(0)">
-                      <span class="mm-text">English</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:void(0)">
-                      <span class="mm-text">Français</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:void(0)">
-                      <span class="mm-text">Romanian</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:void(0)">
-                      <span class="mm-text">Japanese</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </div>
-    <div class="offcanvas-menu_wrapper" id="offcanvasMenu">
-      <div class="offcanvas-menu-inner">
-        <a href="#" class="btn-close"><i class="zmdi zmdi-close"></i></a>
-        <div class="offcanvas-inner_logo">
-          <a href="shop-left-sidebar.html">
-            <img src="/images/menu/logo/1.png" alt="Munoz's Offcanvas Logo" />
-          </a>
-        </div>
-        <div class="short-desc">
-          <p>
-            We are a team of designers and developers that create high quality
-            HTML Template & Woocommerce, Shopify Themes.
-          </p>
-        </div>
-        <div class="offcanvas-component first-child">
-          <span class="offcanvas-component_title">货币</span>
-          <ul class="offcanvas-component_menu">
-            <li><a href="javascript:void(0)">EUR</a></li>
-            <li><a href="javascript:void(0)">GBP</a></li>
-            <li class="active"><a href="javascript:void(0)">USD</a></li>
-          </ul>
-        </div>
-        <div class="offcanvas-component">
-          <span class="offcanvas-component_title">语言</span>
-          <ul class="offcanvas-component_menu">
-            <li class="active"><a href="javascript:void(0)">English</a></li>
-            <li><a href="javascript:void(0)">French</a></li>
-          </ul>
-        </div>
-        <div class="offcanvas-component">
-          <span class="offcanvas-component_title">我的账户</span>
-          <ul class="offcanvas-component_menu">
-            <li><a href="my-account.html">注册</a></li>
-            <li><a href="login-register.html">登录</a></li>
-          </ul>
-        </div>
-        <div class="offcanvas-inner-social_link">
-          <div class="quicky-social_link">
-            <ul>
-              <li class="facebook">
-                <a
-                  href="https://www.facebook.com"
-                  data-toggle="tooltip"
-                  target="_blank"
-                  title="Facebook"
-                >
-                  <i class="fab fa-facebook"></i>
-                </a>
-              </li>
-              <li class="twitter">
-                <a
-                  href="https://twitter.com"
-                  data-toggle="tooltip"
-                  target="_blank"
-                  title="Twitter"
-                >
-                  <i class="fab fa-twitter-square"></i>
-                </a>
-              </li>
-              <li class="youtube">
-                <a
-                  href="https://www.youtube.com"
-                  data-toggle="tooltip"
-                  target="_blank"
-                  title="Youtube"
-                >
-                  <i class="fab fa-youtube"></i>
-                </a>
-              </li>
-              <li class="google-plus">
-                <a
-                  href="https://www.plus.google.com/discover"
-                  data-toggle="tooltip"
-                  target="_blank"
-                  title="Google Plus"
-                >
-                  <i class="fab fa-google-plus"></i>
-                </a>
-              </li>
-              <li class="instagram">
-                <a
-                  href="https://www.instagram.com/"
-                  data-toggle="tooltip"
-                  target="_blank"
-                  title="Instagram"
-                >
-                  <i class="fab fa-instagram"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
     <!-- 搜索框 -->
     <div
       :class="
@@ -766,13 +357,19 @@ export default {
     window.addEventListener("scroll", this.initHeight);
 
   },
+  computed:{
+    username(){
+      return this.$store.state.username
+    }
+  },
   methods: {
     logout() {
       this.axios.get("/userservice/user/logout").then(val => {
         if (val.code === 1) {
           this.$message.success("登出成功");
           this.$router.push("/login");
-          this.$store.commit("setInfo",{})
+          // this.$store.commit("setInfo",{})
+          this.$store.dispatch('setUserName','')
           return;
         }
         this.$message.warning(val.msg);
@@ -800,6 +397,7 @@ export default {
     },
     getcartList() {
       this.axios.get("/userservice/cart/lookThroughCart").then(res => {
+        console.log(res)
         if(res.code === 1) {
           this.cartlist = res.data;
         }

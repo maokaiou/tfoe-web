@@ -13,9 +13,13 @@ axios.defaults.timeout = 8000;
 // 接口代理拦截器
 axios.interceptors.response.use(function (response) {
   let res = response;
+  const path = location.pathname;
   if(res.status==200){
-    return res.data;
-  }else{
+    return res.data;  
+  }else if(res.status == 1){
+    if ( path != '/index')
+      window.location.href = '/login'
+  }else  {
     Message.warning(res.msg);
     return Promise.reject(res);
   }

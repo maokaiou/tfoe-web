@@ -88,6 +88,8 @@ export default {
             console.log(value)
             if (value.code === 1) {
               this.$message.success("登录成功");
+              console.log(value.data.username)
+              this.$store.dispatch('setUserName',value.data.userName)
               this.$router.push("/index");
               return;
             }

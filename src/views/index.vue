@@ -1,7 +1,10 @@
 <template>
   <div class="main">
+    
     <!-- 轮播区域 -->
     <div class="swiper-box">
+      <!-- 进度条区域 -->
+    <div class="progress_item"></div>
       <swiper v-bind:options="swiperOptions">
         <swiper-slide>
           <a><img src="/images/slider/bg/5-1.jpg"/></a>
@@ -11,8 +14,6 @@
         </swiper-slide>
         <!-- Optional controls -->
         <div class="swiper-pagination" slot="pagination"></div>
-        <div class="swiper-button-prev" slot="button-prev"></div>
-        <div class="swiper-button-next" slot="button-next"></div>
       </swiper>
     </div>
     <!-- 广告区域 -->
@@ -705,29 +706,25 @@
 <script>
 import BrandArea from "./../components/BrandArea.vue";
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
-import "swiper/swiper-bundle.css";
-import loginMixin from "@/mixins/loginMixin";
+import "swiper/css/swiper.css";
+// import loginMixin from "@/mixins/loginMixin";
 export default {
-  mixins: [loginMixin],
+  // mixins: [loginMixin],
   data() {
     return {
       swiperOptions: {
-        autoplay: true,
+       autoplay : true,
         loop: true,
         speed: 300,
-        effect: "cube",
-        cubeEffect: {
-          shadowOffset: 100,
-          shadowScale: 0.6
+        effect : 'fade',
+        fadeEffect: {
+          crossFade: true,
         },
         pagination: {
           el: ".swiper-pagination",
           clickable: true
         },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev"
-        }
+       
       }
     };
   },
@@ -741,8 +738,20 @@ export default {
 <style lang="scss">
 .main {
   width: 1379px;
+  // width:100%;
   margin-left: auto;
   margin-right: auto;
+  .progress_item{
+    width:0px;
+    height:9px;
+    background-color:rgba(0,0,0,0.2);
+    animation: progress_slide 3.3s infinite;
+  }
+  @keyframes progress_slide {
+    100%{
+      width:100%;
+    }
+  }
   // .swiper-box {
   //   width: 1379px;
   //   height: 755px;
