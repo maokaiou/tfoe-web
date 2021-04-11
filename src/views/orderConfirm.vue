@@ -56,14 +56,17 @@
                 </div>
                 <!-- 编辑和删除地址 -->
                 <div class="action">
-                  <a href="javascript:;" class="fl">
+                  <a href="javascript:;" 
+                  class="fl"
+                   @click="deleteAddress"  >
                     <svg class="icon icon-del">
                       <use xlink:href="#icon-del"></use>
                     </svg>
                   </a>
                   <a
                     href="javascript:;"
-                    class="fr"
+                    class="fr" 
+                   
                   >
                     <svg class="icon icon-edit">
                       <use xlink:href="#icon-edit"></use>
@@ -134,13 +137,11 @@
       title="新增确认"
       btnType="1"
       :showModal="showEditModal"
-      @cancel="showEditModal= false"
-      @submit = "submitAddress"
     >
       <template v-slot:body>
         <div class="edit-wrap">
           <div class="item">
-            <input type="text" class="input" placeholder="姓名"  @click="abo"/>
+            <input type="text" class="input" placeholder="姓名"/>
             <input type="text" class="input" placeholder="手机号" />
            <input type="text" class="input" placeholder="地址" />
           </div>
@@ -175,20 +176,22 @@ export default {
   methods: {
    openAddressModal(){
       this.showEditModal = true;
+      console.log("编辑")
    },
    submitAddress(){
      console.log('提交地址')
    },
-   a(){
-     console.log("nihao")
+   sub(){
+     console.log("关闭")
+     this.showEditModal= false
    },
-   abo(){
-     console.log("珠宝界")
+   deleteAddress(){
+      this.$message.success("删除");
    }
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .orderConfirm {
   .wrapper {
     background-color: #f5f5f5;

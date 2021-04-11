@@ -23,7 +23,7 @@ import mutations from './mutations.js'
 Vue.use(Vuex);
 
 const state = {
-  username: ' '
+  username: ''
 }
 export default new Vuex.Store({
  state,

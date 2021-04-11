@@ -7676,12 +7676,12 @@ i, .tab-content .tab-pane.active, .scroll-to-top i, .quantity .cart-plus-minus >
 /*  20 - Components - Breadcrumb
 /*----------------------------------------*/
 .breadcrumb-area {
-  background-image: url("../images/breadcrumb/1.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   min-height: 466px;
   position: relative;
+  color: #ffffff;
 }
 
 @media (max-width: 991px) {
@@ -7698,6 +7698,7 @@ i, .tab-content .tab-pane.active, .scroll-to-top i, .quantity .cart-plus-minus >
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   text-align: center;
+  
 }
 
 @media (max-width: 575px) {
@@ -7711,6 +7712,7 @@ i, .tab-content .tab-pane.active, .scroll-to-top i, .quantity .cart-plus-minus >
   text-align: center;
   font-size: 36px;
   margin-bottom: 0;
+  color: #ffffff;
   padding-bottom: 20px;
 }
 
@@ -7748,7 +7750,7 @@ i, .tab-content .tab-pane.active, .scroll-to-top i, .quantity .cart-plus-minus >
 }
 
 .breadcrumb-area.breadcrumb-area-2 {
-  background-image: url("../images/breadcrumb/2.jpg");
+  background-image: url("/src/assets/slider/7.jpg");
   background-position: left;
 }
 

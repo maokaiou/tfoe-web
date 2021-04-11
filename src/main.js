@@ -3,6 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import VueLazyLoad from "vue-lazyload"
 // import VueCookie from "vue-cookie";
 import store from "./store";
 import { Message } from 'element-ui'
@@ -14,9 +15,11 @@ axios.defaults.timeout = 8000;
 axios.interceptors.response.use(function (response) {
   let res = response;
   const path = location.pathname;
-  if(res.status==200){
-    return res.data;  
-  }else if(res.status == 1){
+  if(res){
+        if(res.status == 200)
+          return res.data;  
+  }else if(res.data.code === 0){
+    console.log(res.msg)
     if ( path != '/index')
       window.location.href = '/login'
   }else  {
@@ -28,6 +31,9 @@ axios.interceptors.response.use(function (response) {
 // require('axios');
 // Vue.prototype.$axios = axios;
 Vue.use(VueAxios,axios);
+Vue.use(VueLazyLoad,{
+  loading:"./assets/loading-svg/loading-cylon.svg"
+})
 // Vue.use(VueCookie);
 Vue.prototype.$message = Message;
 Vue.config.productionTip = false;

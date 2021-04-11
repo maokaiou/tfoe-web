@@ -6,7 +6,7 @@
         <div class="breadcrumb-content">
           <h2>Shop Related Page</h2>
           <ul>
-            <li><a href="/#/index">首页</a></li>
+            <li><a href="/index">首页</a></li>
             <li class="active">购物车</li>
           </ul>
         </div>
@@ -21,35 +21,33 @@
               <div class="table-content table-responsive">
                 <table class="table">
                   <thead>
-                    <tr>
-                      <th class="quicky-product-remove">移除</th>
+                     <th class="quicky-product-remove">移除</th>
                       <th class="quicky-product-thumbnail">图片</th>
                       <th class="cart-product-name">产品</th>
                       <th class="quicky-product-price">单位价格</th>
                       <th class="quicky-product-quantity">数量</th>
                       <th class="quicky-product-subtotal">共计</th>
-                    </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td class="quicky-product-remove">
+                    <tr  v-for="(item, index) in cartlist" v-bind:key="index">
+                      <td class="product-remove">
                         <!-- 移除事件 -->
                         <a href="javascript:void(0)"
                           ><i class="zmdi zmdi-close" title="移除"></i
                         ></a>
                       </td>
-                      <td class="quicky-product-thumbnail">
+                      <td class="product-thumbnail">
                         <a href="javascript:void(0)"
                           ><img
-                            src="/images/product/small-size/1.jpg"
-                            alt="Quicky's Cart Thumbnail"
+                            :src="'api/goodservice/' + item.image"
+                            alt=" Cart Thumbnail"
                         /></a>
                       </td>
-                      <td class="quicky-product-name">
-                        <a href="javascript:void(0)">Juma rema pola</a>
+                      <td class="product-name">
+                        <a href="javascript:void(0)">{{item.goodsName}}</a>
                       </td>
                       <td class="quicky-product-price">
-                        <span class="amount">￥46.80</span>
+                        <span class="amount">￥{{item.goodsPrice}}</span>
                       </td>
                       <td class="quantity">
                         <label>数量</label>
@@ -58,6 +56,7 @@
                             class="cart-plus-minus-box"
                             value="1"
                             type="text"
+
                           />
                           <div class="dec qtybutton">
                             <i class="zmdi zmdi-chevron-down"></i>
@@ -97,7 +96,7 @@
                       <input
                         class="button"
                         name="update_cart"
-                        value="Update cart"
+                        value="更新购物车"
                         type="submit"
                       />
                     </div>
@@ -123,8 +122,44 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data(){
+    return {
+      cartlist: [], //购物车商品列表
+    }
+  },
+  methods:{
+    getcartList() {
+      this.axios.get("/userservice/cart/lookThroughCart").then(res => {
+        if(res.code === 1) {
+          this.cartlist = res.data;
+        }
+      });
+    }
+  },
+  mounted(){
+    this.getcartList()
+  }
+
+}
+</script>
 <style lang="scss">
   .bkg {
     background: url('/images/breadcrumb/1.jpg') no-repeat center;
   }
+  .quicky-product-select{
+    a{
+      // display:block;
+      .checkbox{
+        display:inline-block;
+      width:10px;
+      height:10px;
+      // #E5E5E5
+      border: 1px solid #333;
+      }
+    }
+    
+  }
+  
 </style>

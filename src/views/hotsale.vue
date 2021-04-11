@@ -3,10 +3,10 @@
  <div class="breadcrumb-area">
     <div class="container">
         <div class="breadcrumb-content">
-            <h2>Shop Grid View</h2>
+            <h2>车联网</h2>
             <ul>
-                <li><a href="/index">首页</a></li>
-                <li class="active">Shop Left Sidebar</li>
+                <li><a href="/index" >首页</a></li>
+                <li class="active">热卖</li>
             </ul>
         </div>
     </div>
@@ -150,7 +150,8 @@
                             href="javascript:void(0)"
                             data-toggle="tooltip"
                             data-placement="top"
-                            title="Add To cart"
+                            title="购物车"
+                            @click="addCart(1,item.goodsId)"
                             ><i class="icon-bag"></i
                           ></a>
                         </li>
@@ -173,15 +174,6 @@
                       <div
                         class="review-area d-flex justify-content-between align-items-center"
                       >
-                        <!--                        <div class="rating-box gamboge-color">-->
-                        <!--                          <ul>-->
-                        <!--                            <li><i class="icon-star"></i></li>-->
-                        <!--                            <li><i class="icon-star"></i></li>-->
-                        <!--                            <li><i class="icon-star"></i></li>-->
-                        <!--                            <li><i class="icon-star"></i></li>-->
-                        <!--                            <li><i class="icon-star"></i></li>-->
-                        <!--                          </ul>-->
-                        <!--                        </div>-->
                       </div>
                     </div>
                   </div>
@@ -534,7 +526,9 @@ export default {
     getAllGoods() {
       this.axios.get("goodservice/goods/findUpAll").then(value => {
         if (value.code === 1) {
-          this.goodsList = value.data;
+          this.goodsList = value.data.slice(0,6);
+
+          console.log(this.goodsList)
         }
       });
     },
@@ -544,10 +538,13 @@ export default {
     },
     getCategory() {
       this.axios.get("goodservice/goodsType/findAllType").then(value => {
-           console.log(value)
+          //  console.log(value)
+          // console.log("shuzu")
         if (value.code === 1) {
        
           this.categroyList = value.data;
+          console.log(value.data)
+          console.log("nihao")
           // this.categoryData
           this.categroyList.every((value1, index) => {
             this.categoryData[index] = false;
@@ -558,29 +555,57 @@ export default {
       });
     },
     showCategory(index) {
-      console.log(index);
+      // console.log(index);
       Vue.set(this.categoryData,index,!this.categoryData[index])
       // this.categoryData[index] = ;
     },
     // 跳转商品详情页
    skipToDetail(e){
-      console.log(e)
+      // console.log(e)
       this.axios.get('goodservice/goods/findOne',{
         params:{
           goodsId:e
         }
       }).then((res)=>{
         console.log(res)
+        console.log("商品详情")
       })
-    }
-    // addCart(good_id){
-    //   this.axios.post("/goodservice/").then()
+    },
+    // 加入购物车
+    // addCart(goodsCount,goodsId){
+    //   console.log(goodsId)
+    //   this.axios.post("goodservice/cart/addCart",{
+    //     goodsCount,
+    //     goodsId
+    //   }).then((res)=>{
+    //       console.log(res)
+    //       console.log("成功")
+    //   })
     // }
   }
  
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
+.breadcrumb-area {
+  background-image: url("../assets/slider/4.jpg");
+  ul {
+    a {
+      color:#ffff;
+    }
+  }
+}
+.product-item{
+  // height:450px;
+  .product-img{
+    // height:286px;
+    a {
+      img{
+        height:200px;
+      }
+    }
+  }
+}
 .modal-dialog-hotsale {
   top: 0 !important;
   left: 8% !important;

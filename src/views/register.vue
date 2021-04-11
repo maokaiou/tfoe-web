@@ -5,15 +5,15 @@
         <div class="login-form">
           <h4 class="login-title">注册</h4>
           <div class="row">
-            <div class="col-md-6 col-12 mb--20">
+            <div class="col-md-6 col-12">
               <label>名字</label>
               <input type="text" placeholder="名字" v-model="username" />
             </div>
             <div class="col-md-12">
-              <label>电子邮件地址*</label>
+              <label>邮箱</label>
               <input
                 type="email"
-                placeholder="电子邮件地址"
+                placeholder="邮箱"
                 style="float: left"
                 v-model="email"
               />
@@ -53,9 +53,9 @@
 </template>
 <script>
 import BrandArea from "./../components/BrandArea";
-import loginMixin from "@/mixins/loginMixin";
+// import loginMixin from "@/mixins/loginMixin";
 export default {
-  mixins: [loginMixin],
+  // mixins: [loginMixin],
   data() {
     return {
       verifCode: " ",

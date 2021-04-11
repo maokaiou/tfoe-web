@@ -29,110 +29,68 @@
                 <div class="sp-nav">
                     <div class="row">
                       <!-- 左边框 -->
-                      
+                      <div class="col-lg-5">
+                        <div class="sp-img_area">
+                            <swiper v-bind:options="swiperOptions1" class="swiper1">
+                                <swiper-slide >
+                                <a><img src="../assets/images/breadCrumb/1.jpg"/></a>
+                                </swiper-slide>
+                                <swiper-slide>
+                                <a><img src="../assets/images/breadCrumb/6.jpg"/></a>
+                                </swiper-slide>
+                                <swiper-slide>
+                                <a><img src="../assets/images/breadCrumb/3.jpg"/></a>
+                                </swiper-slide>
+                                <!-- Optional controls -->
+                                <!-- <div class="swiper-pagination" slot="pagination"></div> -->
+                            </swiper>
+                             <swiper class="swiper2">
+                                <swiper-slide class="swiper-item">
+                                    <a><img src="../assets/images/breadCrumb/1.jpg"/></a>
+                                </swiper-slide>
+                                <swiper-slide class="swiper-item">
+                                    <a><img src="../assets/images/breadCrumb/6.jpg"/></a>
+                                </swiper-slide>
+                                <swiper-slide class="swiper-item">
+                                    <a><img src="../assets/images/breadCrumb/3.jpg"/></a>
+                                </swiper-slide>
+                            </swiper>
+                        </div>
+                      </div>
                         <!-- 右边框 -->
                         <div class="col-lg-7">
                             <div class="sp-content ml-lg-4">
                                 <div class="sp-heading">
-                                    <h5><a href="#">Moonstar Clock</a></h5>
-                                </div>
-                                <span class="reference">Reference: demo_1</span>
-                                <div class="rating-box">
-                                    <ul>
-                                        <li><i class="zmdi zmdi-star"></i></li>
-                                        <li><i class="zmdi zmdi-star"></i></li>
-                                        <li><i class="zmdi zmdi-star"></i></li>
-                                        <li class="silver-color"><i class="zmdi zmdi-star"></i></li>
-                                        <li class="silver-color"><i class="zmdi zmdi-star"></i></li>
-                                    </ul>
+                                    <h5><a href="javascript:void(0)">产品名称</a></h5>
                                 </div>
                                 <div class="sp-essential_stuff">
                                     <ul>
                                         <li>品牌 <a href="javascript:void(0)">Buxton</a></li>
-                                        <li>产品代码: <a href="javascript:void(0)">产品 16</a></li>
-                                        <li>奖励分数: <a href="javascript:void(0)">100</a></li>
-                                        <li>库存量: <a href="javascript:void(0)">In Stock</a></li>
-                                        <li>价格: <a href="javascript:void(0)"><span>￥453.35</span></a></li>
-                                        <li>积分兑换价格: <a href="javascript:void(0)">400</a></li>
+                                        <li>库存量: <a href="javascript:void(0)">10</a></li>
+                                        <li>价格: <a href="javascript:void(0)"><span>￥150</span></a></li>
                                     </ul>
                                 </div>
                                 <div class="product-size_box">
-                                    <span>Size</span>
+                                    <span>样式</span>
                                     <select class="myniceselect nice-select">
-                                        <option value="1">S</option>
-                                        <option value="2">M</option>
-                                        <option value="3">L</option>
-                                        <option value="4">XL</option>
+                                        <option value="1">快充</option>
+                                        <option value="2">慢充</option>
+                                        <option value="3">加一根充电线下长三安市</option>
+                                        <option value="4">升级版</option>
                                     </select>
-                                </div>
-                                <div class="color-list_area">
-                                    <div class="color-list_heading">
-                                        <h4>Available Options</h4>
-                                    </div>
-                                    <span class="sub-title">颜色</span>
-                                    <div class="color-list">
-                                        <a href="javascript:void(0)" class="single-color active" data-swatch-color="red">
-                                            <span class="bg-red_color"></span>
-                                            <span class="color-text">Red (+￥150)</span>
-                                        </a>
-                                        <a href="javascript:void(0)" class="single-color" data-swatch-color="orange">
-                                            <span class="burnt-orange_color"></span>
-                                            <span class="color-text">Orange (+￥170)</span>
-                                        </a>
-                                        <a href="javascript:void(0)" class="single-color" data-swatch-color="brown">
-                                            <span class="brown_color"></span>
-                                            <span class="color-text">Brown (+￥120)</span>
-                                        </a>
-                                        <a href="javascript:void(0)" class="single-color" data-swatch-color="umber">
-                                            <span class="raw-umber_color"></span>
-                                            <span class="color-text">Umber (+￥125)</span>
-                                        </a>
-                                    </div>
                                 </div>
                                 <div class="quantity">
                                     <label>数量</label>
                                     <div class="cart-plus-minus">
                                         <input class="cart-plus-minus-box" value="1" type="text">
-                                        <div class="dec qtybutton"><i class="zmdi zmdi-chevron-down"></i></div>
-                                        <div class="inc qtybutton"><i class="zmdi zmdi-chevron-up"></i></div>
+                                        <div class="dec qtybutton" @click="updateCart('+')"><i class="zmdi zmdi-chevron-down"></i></div>
+                                        <div class="inc qtybutton" @click="updateCart('-')"><i class="zmdi zmdi-chevron-up"></i></div>
                                     </div>
                                 </div>
                                 <div class="qty-btn_area">
                                     <ul>
-                                        <li><a class="qty-cart_btn" href="cart.html">添加到购物车</a></li>
-                                        <li><a class="qty-wishlist_btn" href="wishlist.html" data-toggle="tooltip" title="Add To Wishlist"><i class="zmdi zmdi-favorite-outline"></i></a>
-                                        </li>
-                                        <li><a class="qty-compare_btn" href="compare.html" data-toggle="tooltip" title="Compare This Product"><i class="zmdi zmdi-shuffle"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="quicky-tag-line">
-                                    <h6>标签:</h6>
-                                    <a href="javascript:void(0)">clock,</a>
-                                    <a href="javascript:void(0)">watch,</a>
-                                    <a href="javascript:void(0)">bag</a>
-                                </div>
-                                <div class="social-link-4 square-style align-left border-style">
-                                    <ul>
-                                        <li class="facebook">
-                                            <a href="https://www.facebook.com" data-toggle="tooltip" target="_blank" title="Facebook">
-                                                <i class="zmdi zmdi-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="twitter">
-                                            <a href="https://twitter.com" data-toggle="tooltip" target="_blank" title="Twitter">
-                                                <i class="zmdi zmdi-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="google-plus">
-                                            <a href="https://www.plus.google.com/discover" data-toggle="tooltip" target="_blank" title="Google Plus">
-                                                <i class="zmdi zmdi-google-plus"></i>
-                                            </a>
-                                        </li>
-                                        <li class="instagram">
-                                            <a href="https://rss.com" data-toggle="tooltip" target="_blank" title="Instagram">
-                                                <i class="zmdi zmdi-instagram"></i>
-                                            </a>
-                                        </li>
+                                        <li><a class="qty-cart_btn" href="javaScript:void(0)" @click="addShopCart">添加到购物车</a></li>
+                                        <li><a class="qty-wishlist_btn" href="javaScript:void(0)" data-toggle="tooltip" title="收藏夹"><i class="zmdi zmdi-favorite-outline"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -142,7 +100,7 @@
             </div>
       </div>
       <!-- 评论区 -->
-       <div class="product-tab_area pt-90">
+       <!-- <div class="product-tab_area pt-90">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -156,62 +114,18 @@
                                 </ul>
                             </div>
                             <div class="tab-content uren-tab_content">
-                                <div id="description" class="tab-pane active show" role="tabpanel">
+                              
+                                <div id="description" :class="tab-pane">
                                     <div class="product-description">
                                         <ul>
                                             <li>
-                                                <span class="title">Ullam aliquam</span>
-                                                <span>Voluptatum, minus? Optio molestias voluptates aspernatur laborum
-                                                ratione minima, natus eaque nemo rem quisquam, suscipit architecto
-                                                saepe. Debitis omnis labore laborum consectetur, quas, esse voluptates
-                                                minus aliquam modi nesciunt earum! Vero rerum molestiae corporis libero
-                                                repellat doloremque quae sapiente ratione maiores qui aliquam, sunt
-                                                obcaecati! Iure nisi doloremque numquam delectus.</span>
+                                                <span class="title">商品名称</span>
+                                                <span>商品很好</span>
                                             </li>
-                                            <li>
-                                                <span class="title">Enim tempore</span>
-                                                <span>Molestias amet quibusdam eligendi exercitationem alias labore tenetur
-                                                quaerat veniam similique aspernatur eveniet, suscipit corrupti itaque
-                                                dolore deleniti nobis, rerum reprehenderit recusandae. Eligendi beatae
-                                                asperiores nisi distinctio doloribus voluptatibus voluptas repellendus
-                                                tempore unde velit temporibus atque maiores aliquid deserunt aspernatur
-                                                amet, soluta fugit magni saepe fugiat vel sunt voluptate vitae</span>
-                                            </li>
-                                            <li>
-                                                <span class="title">Laudantium suscipit</span>
-                                                <span>Odit repudiandae maxime, ducimus necessitatibus error fugiat nihil eum
-                                                dolorem animi voluptates sunt, rem quod reprehenderit expedita, nostrum
-                                                sit accusantium ut delectus. Voluptates at ipsam, eligendi labore
-                                                dignissimos consectetur reprehenderit id error excepturi illo velit
-                                                ratione nisi nam saepe quod! Reiciendis eos, velit fugiat voluptates
-                                                accusamus nesciunt dicta ratione mollitia, asperiores error aliquam!
-                                                Reprehenderit provident, omnis blanditiis fugit, accusamus deserunt
-                                                illum unde, voluptatum consequuntur illo officiis labore doloremque
-                                                quidem aperiam! Fuga, expedita? Laboriosam eum, tempore vitae libero
-                                                voluptate omnis ducimus doloremque hic quibusdam reiciendis ab itaque
-                                                aperiam maiores laudantium esse, consequuntur quos labore modi quasi
-                                                recusandae distinctio iusto optio officia tempora.</span>
-                                            </li>
-                                            <li>
-                                                <span class="title">Molestiae veritatis officia</span>
-                                                <span>Illum fuga esse tenetur inventore, in voluptatibus saepe iste quia
-                                                cupiditate, explicabo blanditiis accusantium ut. Eaque nostrum, quisquam
-                                                doloribus asperiores tempore autem. Ea perspiciatis vitae reiciendis
-                                                maxime similique vel, id ratione blanditiis ullam officiis odio sunt nam
-                                                quos atque accusantium ad! Repellendus, magni aliquid. Iure asperiores
-                                                veniam eum unde dignissimos reprehenderit ut atque velit, harum labore
-                                                nam expedita, pariatur excepturi consectetur animi optio mollitia ad a
-                                                natus eaque aut assumenda inventore dolor obcaecati! Enim ab tempore
-                                                nulla iusto consequuntur quod sit voluptatibus adipisci earum fuga,
-                                                explicabo amet, provident, molestiae optio. Ducimus ex necessitatibus
-                                                assumenda, nisi excepturi ut aspernatur est eius dignissimos pariatur
-                                                unde ipsum sunt quaerat.</span>
-                                            </li>
-
                                         </ul>
                                     </div>
                                 </div>
-                                <div id="specification" class="tab-pane" role="tabpanel">
+                                <div id="specification" :class="tab-pane">
                                     <table class="table table-bordered specification-inner_stuff">
                                         <tbody>
                                             <tr>
@@ -237,7 +151,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div id="reviews" class="tab-pane" role="tabpanel">
+                                <div id="reviews" :class="tab-pane">
                                     <div class="tab-pane active" id="tab-review">
                                         <form class="form-horizontal" id="form-review">
                                             <div id="review">
@@ -307,16 +221,230 @@
                     </div>
                 </div>
             </div>
-        </div>
-        
+       </div> -->
+         <!-- <div class="modal fade modal-wrapper" id="exampleModalCenter">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <div class="modal-inner-area sp-area row">
+                            <div class="col-xl-5 col-lg-6">
+                                <div class="sp-img_area">
+                                    <div class="quicky-element-carousel sp-img_slider slick-img-slider" data-slick-options='{
+                                    "slidesToShow": 1,
+                                    "arrows": false,
+                                    "fade": true,
+                                    "draggable": false,
+                                    "swipe": false,
+                                    "asNavFor": ".sp-img_slider-nav"
+                                    }'>
+                                        <div class="single-slide red">
+                                            <img src="assets/images/product/large-size/1.jpg" alt="Quicky's Product Image">
+                                        </div>
+                                        <div class="single-slide orange">
+                                            <img src="assets/images/product/large-size/2.jpg" alt="Quicky's Product Image">
+                                        </div>
+                                        <div class="single-slide brown">
+                                            <img src="assets/images/product/large-size/3.jpg" alt="Quicky's Product Image">
+                                        </div>
+                                        <div class="single-slide umber">
+                                            <img src="assets/images/product/large-size/4.jpg" alt="Quicky's Product Image">
+                                        </div>
+                                    </div>
+                                    <div class="quicky-element-carousel sp-img_slider-nav arrow-style arrow-sm_size arrow-day_color" data-slick-options='{
+                                   "slidesToShow": 3,
+                                    "asNavFor": ".sp-img_slider",
+                                   "focusOnSelect": true,
+                                   "arrows" : true,
+                                   "spaceBetween": 30
+                                  }' data-slick-responsive='[
+                                    {"breakpoint":1501, "settings": {"slidesToShow": 3}},
+                                    {"breakpoint":1200, "settings": {"slidesToShow": 2}},
+                                    {"breakpoint":992, "settings": {"slidesToShow": 3}},
+                                    {"breakpoint":768, "settings": {"slidesToShow": 3}},
+                                    {"breakpoint":575, "settings": {"slidesToShow": 2}}
+                                ]'>
+                                        <div class="single-slide red">
+                                            <img src="assets/images/product/large-size/1.jpg" alt="Quicky's Product Thumnail">
+                                        </div>
+                                        <div class="single-slide orange">
+                                            <img src="assets/images/product/large-size/2.jpg" alt="Quicky's Product Thumnail">
+                                        </div>
+                                        <div class="single-slide brown">
+                                            <img src="assets/images/product/large-size/3.jpg" alt="Quicky's Product Thumnail">
+                                        </div>
+                                        <div class="single-slide umber">
+                                            <img src="assets/images/product/large-size/4.jpg" alt="Quicky's Product Thumnail">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-7 col-lg-6">
+                                <div class="sp-content">
+                                    <div class="sp-heading">
+                                        <h5><a href="#">Moonstar Clock</a></h5>
+                                    </div>
+                                    <div class="rating-box">
+                                        <ul>
+                                            <li><i class="zmdi zmdi-star"></i></li>
+                                            <li><i class="zmdi zmdi-star"></i></li>
+                                            <li><i class="zmdi zmdi-star"></i></li>
+                                            <li class="silver-color"><i class="zmdi zmdi-star"></i></li>
+                                            <li class="silver-color"><i class="zmdi zmdi-star"></i></li>
+                                        </ul>
+                                    </div>
+                                    <div class="price-box">
+                                        <span class="new-price new-price-2 ml-0">￥194.00</span>
+                                        <span class="old-price">￥241.00</span>
+                                    </div>
+                                    <div class="sp-essential_stuff">
+                                        <ul>
+                                            <li>品牌 <a href="javascript:void(0)">Buxton</a></li>
+                                            <li>产品代码: <a href="javascript:void(0)">产品 16</a></li>
+                                            <li>奖励分数: <a href="javascript:void(0)">100</a></li>
+                                            <li>库存量: <a href="javascript:void(0)">In Stock</a></li>
+                                            <li>价格: <a href="javascript:void(0)"><span>￥453.35</span></a></li>
+                                            <li>积分兑换价格: <a href="javascript:void(0)">400</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="color-list_area">
+                                        <div class="color-list_heading">
+                                            <h4>Available Options</h4>
+                                        </div>
+                                        <span class="sub-title">颜色</span>
+                                        <div class="color-list">
+                                            <a href="javascript:void(0)" class="single-color active" data-swatch-color="red">
+                                                <span class="bg-red_color"></span>
+                                                <span class="color-text">Red (+￥150)</span>
+                                            </a>
+                                            <a href="javascript:void(0)" class="single-color" data-swatch-color="orange">
+                                                <span class="burnt-orange_color"></span>
+                                                <span class="color-text">Orange (+￥170)</span>
+                                            </a>
+                                            <a href="javascript:void(0)" class="single-color" data-swatch-color="brown">
+                                                <span class="brown_color"></span>
+                                                <span class="color-text">Brown (+￥120)</span>
+                                            </a>
+                                            <a href="javascript:void(0)" class="single-color" data-swatch-color="umber">
+                                                <span class="raw-umber_color"></span>
+                                                <span class="color-text">Umber (+￥125)</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="quantity">
+                                        <label>数量</label>
+                                        <div class="cart-plus-minus">
+                                            <input class="cart-plus-minus-box" value="1" type="text">
+                                            <div class="dec qtybutton"><i class="zmdi zmdi-chevron-down"></i></div>
+                                            <div class="inc qtybutton"><i class="zmdi zmdi-chevron-up"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="quicky-group_btn">
+                                        <ul>
+                                            <li><a href="cart.html" class="add-to_cart">添加到购物车</a></li>
+                                            <li><a href="wishlist.html"><i class="zmdi zmdi-favorite-outline"></i></a></li>
+                                            <li><a href="compare.html"><i class="zmdi zmdi-shuffle"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="quicky-tag-line">
+                                        <h6>标签:</h6>
+                                        <a href="javascript:void(0)">clock,</a>
+                                        <a href="javascript:void(0)">watch,</a>
+                                        <a href="javascript:void(0)">bag</a>
+                                    </div>
+                                    <div class="quicky-social_link">
+                                        <ul>
+                                            <li class="facebook">
+                                                <a href="https://www.facebook.com" data-toggle="tooltip" target="_blank" title="Facebook">
+                                                    <i class="fab fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li class="twitter">
+                                                <a href="https://twitter.com" data-toggle="tooltip" target="_blank" title="Twitter">
+                                                    <i class="fab fa-twitter-square"></i>
+                                                </a>
+                                            </li>
+                                            <li class="youtube">
+                                                <a href="https://www.youtube.com" data-toggle="tooltip" target="_blank" title="Youtube">
+                                                    <i class="fab fa-youtube"></i>
+                                                </a>
+                                            </li>
+                                            <li class="google-plus">
+                                                <a href="https://www.plus.google.com/discover" data-toggle="tooltip" target="_blank" title="Google Plus">
+                                                    <i class="fab fa-google-plus"></i>
+                                                </a>
+                                            </li>
+                                            <li class="instagram">
+                                                <a href="https://www.instagram.com/" data-toggle="tooltip" target="_blank" title="Instagram">
+                                                    <i class="fab fa-instagram"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+         <a class="scroll-to-top" href="javascript:void(0)"><i class="icon-arrow-up"></i></a>
     </div>
   </div>
 </template>
 <script>
+import { Swiper, SwiperSlide } from "vue-awesome-swiper";
+import "swiper/css/swiper.css";
 export default {
   data(){
-      return{}
+      return{
+          pro_color:[
+              {    id:1,
+                  name:"红色"
+              },
+               {
+                   id:2,
+                  name:"黄色"
+              },
+               {
+                   id:3,
+                  name:"绿色"
+              }
+          ],
+            swiperOptions1: {
+                autoplay : true,
+                loop: true,
+                speed: 3000,
+                effect : 'fade',
+                fadeEffect: {
+                crossFade: true,
+                },
+                
+                // pagination: {
+                // el: ".swiper-pagination",
+                // clickable: true
+                // },
+                spaceBetween: 10,
+                thumbs: {
+                    swiper: {
+                    el: '.swiper2',
+                    spaceBetween: 10,
+                    slidesPerView: 4,
+                    watchSlidesVisibility: true,/*避免出现bug*/
+                    },
+                }
+            
+            }
+
+          
+      }
   },
+  components: {
+                Swiper,
+                SwiperSlide
+            },
   mounted(){
       this.getproductInfor()
   },
@@ -326,7 +454,67 @@ export default {
         //    console.log(this.$route)
         //   var id = this.$route.parames.id
         //   console.log(id)
+
+      },
+      updateCart(type){
+          console.log(type)
+      },
+      addShopCart(){
+        //   console.log("加入成功")
+          this.axios.post('/userservice/cart/addCart',{
+               goodsCount: 1,
+                goodsId: 1
+          }).then((res)=>{
+              if(res.code === 1){
+                 this.$message.success("添加成功");
+              }else if ( res.code === 0){
+                  this.$message.warning("请先登录")
+                  this.$router.push("/login")
+              }
+          })
       }
   }
 }
 </script>
+<style lang="scss" scoped>
+    .breadcrumb-area{
+        background-image: url("../assets/slider/7.jpg");
+    }  
+    .sp-img_area{
+         .swiper1 {
+            height: 200px;
+            img {
+            width: 100%;
+            height: 100%;
+            }
+           
+        }
+         .swiper2 {
+                height:80px;
+                margin-top:20px;
+                    .swiper-wrapper{
+                        display:flex;
+                         .swiper-item{
+                             flex: 1!important;;
+                            // width: 80px!important;
+                            height: 60px;
+                            display:flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-left:10px;
+                        &:nth-child(1){
+                            margin-left:0px;
+                        }
+                            a{
+                                img{
+                                    width:100%;    
+                                }
+                            }
+                        }  
+                    }
+                    
+            }
+    }
+   
+</style>
+

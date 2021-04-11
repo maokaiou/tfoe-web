@@ -40,7 +40,7 @@
     </div>
   </div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 .message {
   color: #333;
   background-color: #f5f5f5;

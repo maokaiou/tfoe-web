@@ -75,9 +75,6 @@ export default {
       } else if (password === "") {
         this.$message.warning("用户密码不能为空");
         return;
-      } else if (!/\d|\S{6}/.test(password)) {
-        this.$message.warning("请填写6位数以上的密码");
-        return;
       } else {
         this.axios
           .post("/userservice/user/login", {
@@ -102,7 +99,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .row{
    justify-content: center;
    align-items: center;

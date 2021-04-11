@@ -23,16 +23,13 @@
               role="tablist"
             >
               <li class="nav-item">
-                <a class="nav-link">仪表盘</a>
+                <a class="nav-link" href="/cart">购物车</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/orderConfirm">订单</a>
+                <a class="nav-link" >地址</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" >地址es</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link">账户明细</a>
+                <a class="nav-link">我的订单</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" @click="loginOut">登出</a>

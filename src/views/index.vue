@@ -5,12 +5,17 @@
     <div class="swiper-box">
       <!-- 进度条区域 -->
     <div class="progress_item"></div>
+    <div class="swiper-content">
+    </div>
       <swiper v-bind:options="swiperOptions">
         <swiper-slide>
-          <a><img src="/images/slider/bg/5-1.jpg"/></a>
+          <a><img src="../assets/images/breadCrumb/1.jpg"/></a>
         </swiper-slide>
         <swiper-slide>
-          <a><img src="/images/slider/bg/5-2.jpg"/></a>
+          <a><img src="../assets/images/breadCrumb/6.jpg"/></a>
+        </swiper-slide>
+         <swiper-slide>
+          <a><img src="../assets/images/breadCrumb/3.jpg"/></a>
         </swiper-slide>
         <!-- Optional controls -->
         <div class="swiper-pagination" slot="pagination"></div>
@@ -24,7 +29,7 @@
             <div class="banner-item">
               <div class="banner-img">
                 <a href="javascript:void(0)">
-                  <img src="/images/banner/5-1.jpg" alt="Quicky's Banner" />
+                  <img v-lazy="'/images/banner/5-1.jpg'" alt="banner" />
                 </a>
               </div>
             </div>
@@ -35,7 +40,7 @@
                 <div class="banner-item">
                   <div class="banner-img">
                     <a href="javascript:void(0)">
-                      <img src="/images/banner/5-2.jpg" alt="Quicky's Banner" />
+                      <img v-lazy="'/images/banner/5-2.jpg'" alt="banner" />
                     </a>
                   </div>
                 </div>
@@ -44,7 +49,7 @@
                 <div class="banner-item">
                   <div class="banner-img">
                     <a href="javascript:void(0)">
-                      <img src="/images/banner/5-3.jpg" alt="Quicky's Banner" />
+                      <img v-lazy="'/images/banner/5-3.jpg'" alt="banner" />
                     </a>
                   </div>
                 </div>
@@ -55,7 +60,7 @@
                 <div class="banner-item">
                   <div class="banner-img">
                     <a href="javascript:void(0)">
-                      <img src="/images/banner/5-4.jpg" alt="Quicky's Banner" />
+                      <img v-lazy="'/images/banner/5-4.jpg'" alt="banner" />
                     </a>
                   </div>
                 </div>
@@ -64,7 +69,7 @@
                 <div class="banner-item">
                   <div class="banner-img">
                     <a href="javascript:void(0)">
-                      <img src="/images/banner/5-5.jpg" alt="Quicky's Banner" />
+                      <img v-lazy="'/images/banner/5-5.jpg'" alt="banner" />
                     </a>
                   </div>
                 </div>
@@ -109,7 +114,7 @@
                   <div class="product-img">
                     <a href="single-product.html">
                       <img
-                        src="/images/product/medium-size/34.jpg"
+                        v-lazy="'/images/product/medium-size/34.jpg'"
                         alt="Quicky's Product Image"
                       />
                     </a>
@@ -192,7 +197,7 @@
                   <div class="product-img">
                     <a href="single-product.html">
                       <img
-                        src="/images/product/medium-size/35.jpg"
+                        v-lazy="'/images/product/medium-size/35.jpg'"
                         alt="Quicky's Product Image"
                       />
                     </a>
@@ -276,7 +281,7 @@
                   <div class="product-img">
                     <a href="single-product.html">
                       <img
-                        src="/images/product/medium-size/36.jpg"
+                        v-lazy="'/images/product/medium-size/36.jpg'"
                         alt="Quicky's Product Image"
                       />
                     </a>
@@ -366,7 +371,7 @@
             <div class="banner-item">
               <div class="banner-img">
                 <a href="javascript:void(0)">
-                  <img src="/images/banner/5-6.jpg" alt="Quicky's Banner" />
+                  <img v-lazy="'/images/banner/5-6.jpg'" alt="Quicky's Banner" />
                 </a>
               </div>
               <div class="banner-content">
@@ -408,7 +413,7 @@
             <div class="banner-item">
               <div class="banner-img">
                 <a href="javascript:void(0)">
-                  <img src="/images/banner/5-7.jpg" alt="Quicky's Banner" />
+                  <img v-lazy="'/images/banner/5-7.jpg'" alt="Quicky's Banner" />
                 </a>
               </div>
             </div>
@@ -451,7 +456,7 @@
                   <div class="product-img">
                     <a href="single-product.html">
                       <img
-                        src="/images/product/medium-size/37.jpg"
+                        v-lazy="'/images/product/medium-size/37.jpg'"
                         alt="Quicky's Product Image"
                       />
                     </a>
@@ -534,7 +539,7 @@
                   <div class="product-img">
                     <a href="single-product.html">
                       <img
-                        src="/images/product/medium-size/38.jpg"
+                        v-lazy="'/images/product/medium-size/38.jpg'"
                         alt="Quicky's Product Image"
                       />
                     </a>
@@ -618,7 +623,7 @@
                   <div class="product-img">
                     <a href="single-product.html">
                       <img
-                        src="/images/product/medium-size/39.jpg"
+                        v-lazy="'/images/product/medium-size/39.jpg'"
                         alt="Quicky's Product Image"
                       />
                     </a>
@@ -703,7 +708,7 @@
     <brand-area></brand-area>
   </div>
 </template>
-<script>
+<script >
 import BrandArea from "./../components/BrandArea.vue";
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 import "swiper/css/swiper.css";
@@ -735,7 +740,7 @@ export default {
   }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .main {
   width: 1379px;
   // width:100%;
