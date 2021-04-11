@@ -1,29 +1,22 @@
 <template>
+<div>
+ <div class="breadcrumb-area">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <h2>Shop Grid View</h2>
+            <ul>
+                <li><a href="/index">首页</a></li>
+                <li class="active">Shop Left Sidebar</li>
+            </ul>
+        </div>
+    </div>
+  </div>
   <div class="quicky-content_wrapper pt-90 pb-100">
     <div class="container">
       <div class="row">
+        <!-- 左侧 产品目录-->
         <div class="col-lg-3 order-2 order-lg-1">
           <div class="quicky-sidebar-catagories_area">
-            <!--            <div class="quicky-sidebar_categories">-->
-            <!--              <div class="quicky-categories_title first-child">-->
-            <!--                <h5>通过价格过滤</h5>-->
-            <!--              </div>-->
-            <!--              <div class="price-filter">-->
-            <!--                <div id="slider-range"></div>-->
-            <!--                <div class="price-slider-amount">-->
-            <!--                  <div class="label-input">-->
-            <!--                    <label>price : </label>-->
-            <!--                    <input-->
-            <!--                      type="text"-->
-            <!--                      id="amount"-->
-            <!--                      name="price"-->
-            <!--                      placeholder="Add Your Price"-->
-            <!--                    />-->
-            <!--                    <button class="filter-btn">过滤</button>-->
-            <!--                  </div>-->
-            <!--                </div>-->
-            <!--              </div>-->
-            <!--            </div>-->
             <div class="quicky-sidebar_categories category-module">
               <div class="quicky-categories_title">
                 <h5>产品目录</h5>
@@ -47,51 +40,13 @@
                 </ul>
               </div>
             </div>
-            <!-- 颜色 -->
-            <!--            <div class="quicky-sidebar_categories">-->
-            <!--              <div class="quicky-categories_title">-->
-            <!--                <h5>颜色</h5>-->
-            <!--              </div>-->
-            <!--              <ul class="sidebar-checkbox_list">-->
-            <!--                <li>-->
-            <!--                  <a href="javascript:void(0)">Black (1)</a>-->
-            <!--                </li>-->
-            <!--                <li>-->
-            <!--                  <a href="javascript:void(0)">Blue (1)</a>-->
-            <!--                </li>-->
-            <!--                <li>-->
-            <!--                  <a href="javascript:void(0)">Gold (3)</a>-->
-            <!--                </li>-->
-            <!--              </ul>-->
-            <!--            </div>-->
-            <!-- 产品标签 -->
-            <!--            <div class="quicky-sidebar_categories">-->
-            <!--              <div class="quicky-categories_title quicky-tags_title">-->
-            <!--                <h5>产品标签</h5>-->
-            <!--              </div>-->
-            <!--              <ul class="quicky-tags_list">-->
-            <!--                <li><a href="javascript:void(0)">Car</a></li>-->
-            <!--                <li><a href="javascript:void(0)">Toy</a></li>-->
-            <!--                <li><a href="javascript:void(0)">Watch</a></li>-->
-            <!--                <li><a href="javascript:void(0)">Bag</a></li>-->
-            <!--                <li><a href="javascript:void(0)">Shoes</a></li>-->
-            <!--                <li><a href="javascript:void(0)">Shirt</a></li>-->
-            <!--                <li><a href="javascript:void(0)">Pen Stand</a></li>-->
-            <!--              </ul>-->
-            <!--            </div>-->
-            <!-- <div class="quicky-sidebar_categories quicky-banner_area sidebar-banner_area">
-                            <div class="banner-item img-hover_effect">
-                                <div class="banner-img">
-                                    <a href="javascript:void(0)">
-                                        <img class="img-full" src="assets/images/banner/3-1.jpg" alt="Quicky's Banner">
-                                    </a>
-                                </div>
-                            </div>
-                        </div> -->
           </div>
         </div>
+        <!-- 右侧 -->
         <div class="col-lg-9 order-1 order-lg-2">
+         <!--俩种展示效果的图标容器 -->
           <div class="shop-toolbar">
+             <!-- 图标 -->
             <div class="product-view-mode">
               <!-- 第一个图标 -->
               <a
@@ -114,26 +69,23 @@
                 ><i class="zmdi zmdi-view-list-alt"></i
               ></a>
             </div>
+            <!-- 随机显示 -->
             <div class="product-page_count">
               <p>随机显示</p>
             </div>
+            <!-- 排序 -->
             <div class="product-item-selection_area">
               <div class="product-short">
                 <label class="select-label">排序:</label>
                 <select class="nice-select">
-                  <option value="1">Default sorting</option>
-                  <option value="2">Name, A to Z</option>
-                  <option value="3">Name, Z to A</option>
-                  <option value="4">Price, low to high</option>
-                  <option value="5">Price, high to low</option>
-                  <option value="5">Rating (Highest)</option>
-                  <option value="5">Rating (Lowest)</option>
-                  <option value="5">Model (A - Z)</option>
-                  <option value="5">Model (Z - A)</option>
+                  <option value="1">产品名</option>
+                  <option value="2">价格(低到高)</option>
+                  <option value="3">价格（高到低）</option>
                 </select>
               </div>
             </div>
           </div>
+          <!-- 俩种展示效果的商品容器 -->
           <div
             :class="
               dis
@@ -141,18 +93,23 @@
                 : 'shop-product-wrap row listview'
             "
           >
+          <!-- 商品框 -->
             <div class="col-12" v-for="(item, index) in goodsList" :key="index">
+              <!-- 第一种情况 -->
               <div class="product-item">
+                 <!-- 单个商品介绍框 -->
                 <div class="single-product">
                   <div class="product-img">
-                    <a href="single-product.html">
+                     <!-- 商品图片 -->
+                    <a :href="item?'/detail':''" >
                       <img
                         :src="'api/goodservice/' + item.image"
-                        alt="Quicky's Product Image"
+                        alt="Product Image"
                       />
                     </a>
                     <div class="add-actions">
                       <ul>
+                        <!-- 展示商品 -->
                         <li
                           class="quick-view-btn"
                           data-toggle="modal"
@@ -168,8 +125,9 @@
                           ></a>
                         </li>
                         <li>
+                          <!-- 收藏 -->
                           <a
-                            href="wishlist.html"
+                            href="javascript:void(0)"
                             data-toggle="tooltip"
                             data-placement="top"
                             title="Add To Wishlist"
@@ -177,17 +135,19 @@
                           ></a>
                         </li>
                         <li>
+                          <!-- 刷新 -->
                           <a
-                            href="compare.html"
+                            href="javascript:void(0)"
                             data-toggle="tooltip"
                             data-placement="top"
                             title="Add To Compare"
                             ><i class="icon-refresh"></i
                           ></a>
                         </li>
+                        <!-- 加入购物车 -->
                         <li>
                           <a
-                            href="cart.html"
+                            href="javascript:void(0)"
                             data-toggle="tooltip"
                             data-placement="top"
                             title="Add To cart"
@@ -203,7 +163,7 @@
                         <span>Clock</span>
                       </div>
                       <h3 class="product-name">
-                        <a href="single-product.html">{{ item.goodsName }}</a>
+                        <a href="javascript:void(0)">{{ item.goodsName }}</a>
                       </h3>
                       <div class="price-box">
                         <span class="new-price ml-0"
@@ -227,26 +187,29 @@
                   </div>
                 </div>
               </div>
-              <!-- 第二个 -->
+              <!-- 第二种情况 -->
               <div class="list-product_item">
                 <div class="single-product">
                   <div class="product-img">
-                    <a href="single-product.html">
+                    <a :href="item?'/detail':''">
                       <img
                         :src="'api/goodservice/' + item.image"
-                        alt="Quicky's Product Image"
+                        alt="Product Image"
                       />
                     </a>
                   </div>
                   <div class="quicky-product-content">
                     <div class="product-desc_info">
+                      <!-- 产品名字 -->
                       <h6 class="product-name">
-                        <a href="single-product.html">Abstract Design Clock</a>
+                        <a href="javascript:void(0)">Abstract Design Clock</a>
                       </h6>
+                      <!-- 价格 -->
                       <div class="price-box">
                         <span class="old-price">￥75.00</span>
                         <span class="new-price">￥70.00</span>
                       </div>
+                      <!-- 评分 -->
                       <div class="rating-box gamboge-color">
                         <ul>
                           <li><i class="icon-star"></i></li>
@@ -264,6 +227,7 @@
                     </div>
                     <div class="add-actions">
                       <ul>
+                        <!-- 查询 -->
                         <li
                           class="quick-view-btn"
                           data-toggle="modal"
@@ -273,31 +237,34 @@
                             href="javascript:void(0)"
                             data-toggle="tooltip"
                             data-placement="top"
-                            title="Quick View"
+                            title="View"
                             ><i class="icon-magnifier"></i
                           ></a>
                         </li>
+                        <!-- 收藏 -->
                         <li>
                           <a
-                            href="wishlist.html"
+                            href="javascript:void(0)"
                             data-toggle="tooltip"
                             data-placement="top"
                             title="Add To Wishlist"
                             ><i class="icon-heart"></i
                           ></a>
                         </li>
+                        <!-- 刷新 -->
                         <li>
                           <a
-                            href="compare.html"
+                            href="javascript:void(0)"
                             data-toggle="tooltip"
                             data-placement="top"
                             title="Add To Compare"
                             ><i class="icon-refresh"></i
                           ></a>
                         </li>
+                        <!-- 加入购物车 -->
                         <li>
                           <a
-                            href="cart.html"
+                            href="javascript:void(0)"
                             data-toggle="tooltip"
                             data-placement="top"
                             title="Add To cart"
@@ -311,24 +278,10 @@
               </div>
             </div>
           </div>
-          <!--          <div class="row">-->
-          <!--            <div class="col-lg-12">-->
-          <!--              <div class="quicky-paginatoin-area">-->
-          <!--                <ul class="quicky-pagination-box">-->
-          <!--                  <li class="active"><a href="javascript:void(0)">1</a></li>-->
-          <!--                  <li><a href="javascript:void(0)">2</a></li>-->
-          <!--                  <li><a href="javascript:void(0)">3</a></li>-->
-          <!--                  <li><a href="javascript:void(0)">4</a></li>-->
-          <!--                  <li><a href="javascript:void(0)">5</a></li>-->
-          <!--                  <li><a class="Next" href="javascript:void(0)">Next</a></li>-->
-          <!--                </ul>-->
-          <!--              </div>-->
-          <!--            </div>-->
-          <!--          </div>-->
         </div>
       </div>
     </div>
-    <!--    图片展示-->
+      <!-- 点击QuickView 触发商品具体信息展示 -->
     <div
       :class="
         show.enable
@@ -343,6 +296,7 @@
       >
         <div class="modal-content">
           <div class="modal-body">
+            <!-- 关闭按钮 -->
             <button
               type="button"
               class="close"
@@ -373,54 +327,12 @@
                       />
                     </div>
                   </div>
-                  <!--                  <div-->
-                  <!--                    class="quicky-element-carousel sp-img_slider-nav arrow-style arrow-sm_size arrow-day_color"-->
-                  <!--                    data-slick-options='{-->
-                  <!--                                   "slidesToShow": 3,-->
-                  <!--                                    "asNavFor": ".sp-img_slider",-->
-                  <!--                                   "focusOnSelect": true,-->
-                  <!--                                   "arrows" : true,-->
-                  <!--                                   "spaceBetween": 30-->
-                  <!--                                  }'-->
-                  <!--                    data-slick-responsive='[-->
-                  <!--                                    {"breakpoint":1501, "settings": {"slidesToShow": 3}},-->
-                  <!--                                    {"breakpoint":1200, "settings": {"slidesToShow": 2}},-->
-                  <!--                                    {"breakpoint":992, "settings": {"slidesToShow": 3}},-->
-                  <!--                                    {"breakpoint":768, "settings": {"slidesToShow": 3}},-->
-                  <!--                                    {"breakpoint":575, "settings": {"slidesToShow": 2}}-->
-                  <!--                                ]'-->
-                  <!--                  >-->
-                  <!--                    <div class="single-slide red">-->
-                  <!--                      <img-->
-                  <!--                        src="/images/product/large-size/1.jpg"-->
-                  <!--                        alt="Quicky's Product Thumnail"-->
-                  <!--                      />-->
-                  <!--                    </div>-->
-                  <!--                    <div class="single-slide orange">-->
-                  <!--                      <img-->
-                  <!--                        src="/images/product/large-size/2.jpg"-->
-                  <!--                        alt="Quicky's Product Thumnail"-->
-                  <!--                      />-->
-                  <!--                    </div>-->
-                  <!--                    <div class="single-slide brown">-->
-                  <!--                      <img-->
-                  <!--                        src="/images/product/large-size/3.jpg"-->
-                  <!--                        alt="Quicky's Product Thumnail"-->
-                  <!--                      />-->
-                  <!--                    </div>-->
-                  <!--                    <div class="single-slide umber">-->
-                  <!--                      <img-->
-                  <!--                        src="/images/product/large-size/4.jpg"-->
-                  <!--                        alt="Quicky's Product Thumnail"-->
-                  <!--                      />-->
-                  <!--                    </div>-->
-                  <!--                  </div>-->
                 </div>
               </div>
               <div class="col-xl-7 col-lg-6">
                 <div class="sp-content">
                   <div class="sp-heading">
-                    <h5><a href="#">Moonstar Clock</a></h5>
+                    <h5><a href="#">Moonstar</a></h5>
                   </div>
                   <div class="rating-box">
                     <ul>
@@ -529,12 +441,6 @@
                       </li>
                     </ul>
                   </div>
-                  <!--                  <div class="quicky-tag-line">-->
-                  <!--                    <h6>标签:</h6>-->
-                  <!--                    <a href="javascript:void(0)">clock,</a>-->
-                  <!--                    <a href="javascript:void(0)">watch,</a>-->
-                  <!--                    <a href="javascript:void(0)">bag</a>-->
-                  <!--                  </div>-->
                   <div class="quicky-social_link">
                     <ul>
                       <li class="facebook">
@@ -597,6 +503,7 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 <script>
 import Vue from 'vue'
@@ -612,6 +519,10 @@ export default {
       },
       categoryData: []
     };
+  },
+   created() {
+    this.getAllGoods();
+    this.getCategory();
   },
   methods: {
     distribute1() {
@@ -633,7 +544,9 @@ export default {
     },
     getCategory() {
       this.axios.get("goodservice/goodsType/findAllType").then(value => {
+           console.log(value)
         if (value.code === 1) {
+       
           this.categroyList = value.data;
           // this.categoryData
           this.categroyList.every((value1, index) => {
@@ -649,14 +562,22 @@ export default {
       Vue.set(this.categoryData,index,!this.categoryData[index])
       // this.categoryData[index] = ;
     },
+    // 跳转商品详情页
+   skipToDetail(e){
+      console.log(e)
+      this.axios.get('goodservice/goods/findOne',{
+        params:{
+          goodsId:e
+        }
+      }).then((res)=>{
+        console.log(res)
+      })
+    }
     // addCart(good_id){
     //   this.axios.post("/goodservice/").then()
     // }
-  },
-  created() {
-    this.getAllGoods();
-    this.getCategory();
   }
+ 
 };
 </script>
 <style lang="scss">

@@ -8,8 +8,9 @@
           <a
             href="javascript:;"
             class="icon-close"
-            v-on:click="$emit('cancel')"
+            @click="a"
           ></a>
+          <!-- @click="$emit('cancel')" -->
         </div>
         <div class="modal-body">
           <slot name="body"></slot>
@@ -19,14 +20,14 @@
             href="javascript:;"
             class="btn"
             v-if="btnType == 1"
-            v-on:click="$emit('submit')"
-            >{{ sureText }}</a
-          >
+            @click="$emit('submit')"
+            >{{ sureText }}
+          </a>
           <a
             href="javascript:;"
             class="btn"
             v-if="btnType == 2"
-            v-on:click="$emit('cancel')"
+            @click="$emit('cancel')"
             >{{ cancelText }}</a
           >
           <div class="btn-group" v-if="btnType == 3">
@@ -36,7 +37,7 @@
             <a
               href="javascript:;"
               class="btn btn-default"
-              v-on:click="$emit('cancel')"
+              @click="$emit('cancel')"
               >{{ cancelText }}</a
             >
           </div>
@@ -67,6 +68,11 @@ export default {
       default: "取消"
     },
     showModal: Boolean
+  },
+  methods:{
+    a(){
+      console.log("nijaop")
+    }
   }
 };
 </script>

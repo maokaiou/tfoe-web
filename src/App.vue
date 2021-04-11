@@ -1,10 +1,18 @@
 <template>
-  <div id="app">
+  <div class="template-color-5 font-family-02">
     <router-view />
   </div>
 </template>
 <script>
-  
+   export default{
+
+     methods:{
+       getUserInfor(){
+        //  this.axios.get('/',{}).then((res)=>{  })
+        // to d0
+       }
+     }
+   }
 </script>
 
 <style lang="scss">

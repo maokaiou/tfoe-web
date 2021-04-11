@@ -134,13 +134,13 @@
       title="新增确认"
       btnType="1"
       :showModal="showEditModal"
-      @cancel="showEditModal=false"
-      @submit="submitAddress"
+      @cancel="showEditModal= false"
+      @submit = "submitAddress"
     >
       <template v-slot:body>
         <div class="edit-wrap">
           <div class="item">
-            <input type="text" class="input" placeholder="姓名" />
+            <input type="text" class="input" placeholder="姓名"  @click="abo"/>
             <input type="text" class="input" placeholder="手机号" />
            <input type="text" class="input" placeholder="地址" />
           </div>
@@ -178,6 +178,12 @@ export default {
    },
    submitAddress(){
      console.log('提交地址')
+   },
+   a(){
+     console.log("nihao")
+   },
+   abo(){
+     console.log("珠宝界")
    }
   },
 };
