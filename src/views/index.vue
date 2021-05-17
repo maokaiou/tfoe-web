@@ -61,6 +61,7 @@
                   <div class="banner-img">
                     <a href="javascript:void(0)">
                       <img v-lazy="'/images/banner/5-4.jpg'" alt="banner" />
+                      <img v-lazy="'/images/banner/5-4.jpg'" alt="Quicky's Banner" />
                     </a>
                   </div>
                 </div>
