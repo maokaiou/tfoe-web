@@ -54,20 +54,20 @@
                         <div class="cart-plus-minus">
                           <input
                             class="cart-plus-minus-box"
-                            value="1"
                             type="text"
-
+                            :value="item.goodsCount"
                           />
-                          <div class="dec qtybutton">
+                         
+                          <div class="dec qtybutton" @click="updateCart('-',item)">
                             <i class="zmdi zmdi-chevron-down"></i>
                           </div>
-                          <div class="inc qtybutton">
+                          <div class="inc qtybutton" @click="updateCart('+',item)">
                             <i class="zmdi zmdi-chevron-up"></i>
                           </div>
                         </div>
                       </td>
                       <td class="product-subtotal">
-                        <span class="amount">￥46.80</span>
+                        <span class="amount">￥{{item.goodsPrice}}*{{item.goodsCount}}</span>
                       </td>
                     </tr>
                   </tbody>
@@ -108,8 +108,8 @@
                   <div class="cart-page-total">
                     <h2>购物车总计</h2>
                     <ul>
-                      <li>小计 <span>￥118.60</span></li>
-                      <li>共计 <span>￥118.60</span></li>
+                      <li>小计 <span>￥</span></li>
+                      <li>共计 <span>￥</span></li>
                     </ul>
                     <a href="/orderConfirm">订单确认</a>
                   </div>
@@ -137,7 +137,40 @@ export default {
           console.log(res.data)
         }
       });
-    }
+    },
+    updateCart(type,item){
+          let goodsCount = item.goodsCount
+          if(type === '+'){
+            // ++goodsCount;
+               this.axios.get('/userservice/cart/AddGoodsCount',{
+                   params:{
+                       goods_id:item.goodsId
+                     }
+               }).then((res)=>{
+                 console.log(res)
+                 if(res.code == 1){
+                    this.getcartList()
+                 }
+               })
+          }
+          else if(type==='-'){
+              if(goodsCount === 1){
+                  this.$message.warning("至少保留一件商品")
+                  return;
+              }else{
+                   this.axios.get('/userservice/cart/minusGoodsCount',{
+                     params:{
+                       goods_id:item.goodsId
+                     }
+                    }).then((res)=>{
+                       if(res.code == 1){
+                            this.getcartList()
+                        }
+                    })
+              }
+          }
+         
+      },
   },
   mounted(){
     this.getcartList()

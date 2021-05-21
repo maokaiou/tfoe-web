@@ -84,14 +84,17 @@
           <div class="item-good">
             <h2>商品</h2>
             <ul>
-              <li>
+              <li v-for="(item,index) in cartlist" :key="index">
                 <div class="good-name">
-                  商品名字
+                  {{item.goodsName}}
+                </div>
+                <div class="good-img">
+                  <img :src="'api/goodservice/' + item.image" class="imgs">
                 </div>
                 <div class="good-price">
-                  商品价格
+                  {{item.goodsPrice}}
                 </div>
-                <div class="good-total">商品总价元</div>
+                <div class="good-total">{{item.goodsPrice}}*{{item.goodsCount}}</div>
               </li>
             </ul>
           </div>
@@ -107,11 +110,11 @@
           <div class="detail">
             <div class="item">
               <span class="item-name">商品件数：</span>
-              <span class="item-val">{{ 1 }}件</span>
+              <span class="item-val">{{ countsGoods }}件</span>
             </div>
             <div class="item">
               <span class="item-name">商品总价：</span>
-              <span class="item-val">{{ 20 }}元</span>
+              <span class="item-val">{{ counutPrice }}元</span>
             </div>
             <div class="item">
               <span class="item-name">优惠活动：</span>
@@ -123,7 +126,7 @@
             </div>
             <div class="item-total">
               <span class="item-name">应付总额：</span>
-              <span class="item-val">{{ 59 }}元</span>
+              <span class="item-val">{{ counutPrice }}元</span>
             </div>
           </div>
           <div class="btn-group">
@@ -166,14 +169,18 @@ export default {
   data() {
     return {
        showEditModal:true,//是否显示新增或者编辑弹框
-       allAddress:[] // 所有收货地址
+       allAddress:[] ,// 所有收货地址
+       cartlist:[], // 购物车列表
+       counutPrice:0,
+       countsGoods:0
     };
   },
   components: {
     Modal,
   },
   mounted() {
-    this.showAllAddress()
+    this.showAllAddress(),
+    this.getcartList()
   },
   methods: {
    openAddressModal(){
@@ -183,6 +190,18 @@ export default {
    submitAddress(){
      console.log('提交地址')
    },
+   // 获取购物车商品
+   getcartList() {
+      this.axios.get("/userservice/cart/lookThroughCart").then((res) => {
+        if(res.code === 1) {
+          this.cartlist = res.data;
+          for( let i=0, len = this.cartlist.length;i<len ;i++ ){
+              this.counutPrice+=this.cartlist[i].goodsCount * this.cartlist[i].goodsPrice
+              this.countsGoods+=this.cartlist[i].goodsCount
+          }
+        }
+      });
+    },
    open(){
         this.$prompt('请输入邮箱', '提示', {
           confirmButtonText: '确定',
@@ -331,11 +350,18 @@ export default {
             font-size: 16px;
             color: #333333;
             .good-name {
-              flex: 5;
+              flex: 2;
               img {
                 width: 30px;
                 height: 30px;
                 vertical-align: middle;
+              }
+            }
+            .good-img{
+              flex:4;
+              .imgs{
+                width:20px;
+                height:30px;
               }
             }
             .good-price {

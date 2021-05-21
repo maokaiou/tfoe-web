@@ -455,11 +455,11 @@ export default {
         console.log(res)
         if(res.code == 1){
             this.proDetail = res.data
-            console.log(this.proDetail.image)
+            // console.log(this.proDetail.image)
             this.proDetailImage = this.proDetail.image.split(';')
-            console.log(this.proDetailImage)
-             console.log("商品详情")
-             console.log(this.proDetail)
+            // console.log(this.proDetailImage)
+            //  console.log("商品详情")
+            //  console.log(this.proDetail)
         }
       })
 
