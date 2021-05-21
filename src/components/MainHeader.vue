@@ -65,7 +65,7 @@
                     </a>
                   </li>
                   <!-- 购物车展示 -->
-                  <li class="minicart-wrap mr-md_0">
+                  <li class="minicart-wrap mr-md_0" v-if="username">
                     <a @click="openCart" class="minicart-btn toolbar-btn">
                       <div class="minicart-count_area">
                         <i class="zmdi zmdi-mall"></i>
@@ -126,7 +126,8 @@
           <ul class="minicart-list" v-for="(item, index) in cartlist"
               v-bind:key="index">
             <li
-              class="minicart-product">
+              class="minicart-product"
+              @click="jumpDetail(item.goodsId)">
               <a class="product-item_remove" href="javascript:void(0)"
                 @click="deleteProduct(item.goodsId)"
                 ><i class="zmdi zmdi-close"></i
@@ -206,7 +207,8 @@ export default {
       openCartData: false,
       openSearchPage: false,
       cartlist: [], //购物车商品列表
-      isFixed: false
+      isFixed: false,
+      goodsAllPrices:[]
     };
   },
   mounted() {
@@ -244,6 +246,7 @@ export default {
     },
     openCart() {
       this.openCartData = !this.openCartData;
+      this.getcartList() 
     },
     openSearch() {
       this.openSearchPage = !this.openSearchPage;
@@ -259,6 +262,10 @@ export default {
         }
       });
     },
+   // 跳转详情
+     jumpDetail(e){
+      this.$router.push('/detail/'+e)
+    },
     // 移除购物车商品
     deleteProduct(id){
       this.axios.get('/userservice/cart/removeGoods',{
@@ -266,10 +273,11 @@ export default {
             goods_id:id
           }
         }).then((res)=>{
-          console.log(res)
-          console.log("移除成功")
-          this.getcartList()
-        })
+          if(res.code == 1){
+             console.log("移除成功")
+             this.getcartList()
+          }
+       })
     }
   }
 };

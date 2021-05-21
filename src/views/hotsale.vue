@@ -101,7 +101,7 @@
                 <div class="single-product">
                   <div class="product-img">
                      <!-- 商品图片 -->
-                    <a :href="item?'/detail':''" >
+                    <a @click="jumpDetail(item.goodsId)">
                       <img
                         :src="'api/goodservice/' + item.image"
                         alt="Product Image"
@@ -559,18 +559,10 @@ export default {
       Vue.set(this.categoryData,index,!this.categoryData[index])
       // this.categoryData[index] = ;
     },
-    // 跳转商品详情页
-   skipToDetail(e){
-      // console.log(e)
-      this.axios.get('goodservice/goods/findOne',{
-        params:{
-          goodsId:e
-        }
-      }).then((res)=>{
-        console.log(res)
-        console.log("商品详情")
-      })
-    },
+    // 跳转详情页
+    jumpDetail(e){
+      this.$router.push('/detail/'+e)
+    }
     // 加入购物车
     // addCart(goodsCount,goodsId){
     //   console.log(goodsId)

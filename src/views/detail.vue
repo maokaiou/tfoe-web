@@ -32,27 +32,17 @@
                       <div class="col-lg-5">
                         <div class="sp-img_area">
                             <swiper v-bind:options="swiperOptions1" class="swiper1">
-                                <swiper-slide >
-                                <a><img src="../assets/images/breadCrumb/1.jpg"/></a>
-                                </swiper-slide>
-                                <swiper-slide>
-                                <a><img src="../assets/images/breadCrumb/6.jpg"/></a>
-                                </swiper-slide>
-                                <swiper-slide>
-                                <a><img src="../assets/images/breadCrumb/3.jpg"/></a>
+                                <swiper-slide v-for="(item,index) in proDetailImage" :key="index">
+                                <a><img 
+                                :src="'api/goodservice/'+ item"
+                                /></a>
                                 </swiper-slide>
                                 <!-- Optional controls -->
                                 <!-- <div class="swiper-pagination" slot="pagination"></div> -->
                             </swiper>
                              <swiper class="swiper2">
-                                <swiper-slide class="swiper-item">
+                                <swiper-slide class="swiper-item" v-for="(item,index) in 3" :key="index">
                                     <a><img src="../assets/images/breadCrumb/1.jpg"/></a>
-                                </swiper-slide>
-                                <swiper-slide class="swiper-item">
-                                    <a><img src="../assets/images/breadCrumb/6.jpg"/></a>
-                                </swiper-slide>
-                                <swiper-slide class="swiper-item">
-                                    <a><img src="../assets/images/breadCrumb/3.jpg"/></a>
                                 </swiper-slide>
                             </swiper>
                         </div>
@@ -61,13 +51,12 @@
                         <div class="col-lg-7">
                             <div class="sp-content ml-lg-4">
                                 <div class="sp-heading">
-                                    <h5><a href="javascript:void(0)">产品名称</a></h5>
+                                    <h5><a href="javascript:void(0)">{{proDetail.goodsName}}</a></h5>
                                 </div>
                                 <div class="sp-essential_stuff">
                                     <ul>
-                                        <li>品牌 <a href="javascript:void(0)">Buxton</a></li>
                                         <li>库存量: <a href="javascript:void(0)">10</a></li>
-                                        <li>价格: <a href="javascript:void(0)"><span>￥150</span></a></li>
+                                        <li>价格: <a href="javascript:void(0)"><span>￥{{proDetail.goodsPrice}}</span></a></li>
                                     </ul>
                                 </div>
                                 <div class="product-size_box">
@@ -82,9 +71,9 @@
                                 <div class="quantity">
                                     <label>数量</label>
                                     <div class="cart-plus-minus">
-                                        <input class="cart-plus-minus-box" value="1" type="text">
-                                        <div class="dec qtybutton" @click="updateCart('+')"><i class="zmdi zmdi-chevron-down"></i></div>
-                                        <div class="inc qtybutton" @click="updateCart('-')"><i class="zmdi zmdi-chevron-up"></i></div>
+                                        <input class="cart-plus-minus-box" v-model="proAccount" type="text">
+                                        <div class="dec qtybutton" @click="updateCart('-')"><i class="zmdi zmdi-chevron-down"></i></div>
+                                        <div class="inc qtybutton" @click="updateCart('+')"><i class="zmdi zmdi-chevron-up"></i></div>
                                     </div>
                                 </div>
                                 <div class="qty-btn_area">
@@ -436,9 +425,11 @@ export default {
                     },
                 }
             
-            }
-
-          
+            },
+        goodsId:"",
+        proDetail:{}, //商品信息
+        proDetailImage:[], // 商品图片
+        proAccount:1
       }
   },
   components: {
@@ -447,23 +438,50 @@ export default {
             },
   mounted(){
       this.getproductInfor()
+
   },
   methods:{
       getproductInfor(){
         //   console.log(this.$router)
-        //    console.log(this.$route)
-        //   var id = this.$route.parames.id
-        //   console.log(id)
+           console.log(this.$route)
+           var goodsId = this.$route.params.id
+           this.goodsId = goodsId
+        //    this.goodsId = goodsId
+        this.axios.get('goodservice/goods/findOne',{
+            params:{
+            goodsId
+            }
+      }).then((res)=>{
+        console.log(res)
+        if(res.code == 1){
+            this.proDetail = res.data
+            console.log(this.proDetail.image)
+            this.proDetailImage = this.proDetail.image.split(';')
+            console.log(this.proDetailImage)
+             console.log("商品详情")
+             console.log(this.proDetail)
+        }
+      })
 
       },
       updateCart(type){
           console.log(type)
+          if(type==='+'){
+              this.proAccount=this.proAccount+1
+          }
+          if(type==='-'){
+              if(this.proAccount === 1){
+                  this.$message.warning("至少保留一件商品")
+              }else{
+                  this.proAccount=this.proAccount-1
+              }
+          }
       },
       addShopCart(){
         //   console.log("加入成功")
           this.axios.post('/userservice/cart/addCart',{
-               goodsCount: 1,
-                goodsId: 1
+               goodsCount: this.proAccount,
+                goodsId: this.goodsId
           }).then((res)=>{
               if(res.code === 1){
                  this.$message.success("添加成功");
@@ -472,7 +490,19 @@ export default {
                   this.$router.push("/login")
               }
           })
-      }
+      },
+      // 商品详情页
+//    skipToDetail(e){
+//       // console.log(e)
+//       this.axios.get('goodservice/goods/findOne',{
+//         params:{
+//           goodsId:e
+//         }
+//       }).then((res)=>{
+//         console.log(res)
+//         console.log("商品详情")
+//       })
+//     },
   }
 }
 </script>

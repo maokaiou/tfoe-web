@@ -48,17 +48,17 @@
           <div class="item-address">
             <h2 class="addr-title">收货地址</h2>
             <div class="addr-list clearfix">
-              <div class="addr-info">
-                <h2>名字</h2>
-                <div class="phone">号码</div>
+              <div class="addr-info" v-for="(item,index) in allAddress" :key="index">
+                <h2>{{item.name}}</h2>
+                <div class="phone">{{item.phone}}</div>
                 <div class="street">
-                 地址
+                 {{item.address}}
                 </div>
                 <!-- 编辑和删除地址 -->
                 <div class="action">
                   <a href="javascript:;" 
                   class="fl"
-                   @click="deleteAddress"  >
+                   @click="deleteAddress(item.addressId)"  >
                     <svg class="icon icon-del">
                       <use xlink:href="#icon-del"></use>
                     </svg>
@@ -75,10 +75,10 @@
                 </div>
               </div>
               <!-- 新增地址 -->
-              <div class="addr-add" @click="openAddressModal">
+              <el-button type="text" @click="open" class="addr-add">
                 <div class="icon-add"></div>
                 <div>添加新地址</div>
-              </div>
+              </el-button>
             </div>
           </div>
           <div class="item-good">
@@ -165,13 +165,15 @@ import Modal from "./../components/Modal.vue";
 export default {
   data() {
     return {
-       showEditModal:false,//是否显示新增或者编辑弹框
+       showEditModal:true,//是否显示新增或者编辑弹框
+       allAddress:[] // 所有收货地址
     };
   },
   components: {
     Modal,
   },
   mounted() {
+    this.showAllAddress()
   },
   methods: {
    openAddressModal(){
@@ -181,12 +183,50 @@ export default {
    submitAddress(){
      console.log('提交地址')
    },
+   open(){
+        this.$prompt('请输入邮箱', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          inputPattern: /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
+          inputErrorMessage: '邮箱格式不正确'
+        }).then(({ value }) => {
+          this.$message({
+            type: 'success',
+            message: '你的邮箱是: ' + value
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '取消输入'
+          });       
+        });
+   },
    sub(){
      console.log("关闭")
      this.showEditModal= false
    },
-   deleteAddress(){
-      this.$message.success("删除");
+   deleteAddress(addressId){
+     this.axios.get('/userservice/address/deleteAddress',{
+       params:{
+         address_id:addressId
+       }
+     }).then((res)=>{
+       console.log(res)
+       if(res.code == 1){
+         this.$message.success("删除");
+         this.showAllAddress()
+         location.reload()
+       }
+        
+     })
+   },
+   showAllAddress(){
+     this.axios.get('/userservice/address/queryAddress').then((res)=>{
+       if(res.code == 1){
+         this.allAddress = res.data
+         console.log(res.data)
+       }
+     })
    }
   },
 };

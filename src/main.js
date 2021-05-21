@@ -6,7 +6,7 @@ import VueAxios from "vue-axios";
 import VueLazyLoad from "vue-lazyload"
 // import VueCookie from "vue-cookie";
 import store from "./store";
-import { Message } from 'element-ui'
+import { Message, MessageBox, Button} from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 
 axios.defaults.baseURL = "/api";
@@ -33,9 +33,11 @@ axios.interceptors.response.use(function (response) {
 Vue.use(VueAxios,axios);
 Vue.use(VueLazyLoad,{
   loading:"./assets/loading-svg/loading-cylon.svg"
-})
+});
+Vue.use(Button)
 // Vue.use(VueCookie);
 Vue.prototype.$message = Message;
+Vue.prototype.$msgbox = MessageBox;
 Vue.config.productionTip = false;
 new Vue({
   router,

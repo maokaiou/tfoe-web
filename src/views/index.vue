@@ -110,16 +110,16 @@
                             }}
                         ]'
             >
-              <div class="product-item">
+              <div class="product-item" v-for="(item, index) in characterList" :key="index">
                 <div class="single-product">
                   <div class="product-img">
                     <a href="single-product.html">
                       <img
-                        v-lazy="'/images/product/medium-size/34.jpg'"
-                        alt="Quicky's Product Image"
+                        :src="'api/goodservice/' + item.image"
+                        alt="Product Image"
                       />
                     </a>
-                    <span class="sticker red-color">Sale</span>
+                    <span class="sticker red-color">特色产品</span>
                     <div class="add-actions hover-right_side">
                       <ul>
                         <li
@@ -175,172 +175,6 @@
                       </h3>
                       <div class="price-box">
                         <span class="new-price ml-0">￥70.00</span>
-                      </div>
-                      <div
-                        class="review-area d-flex justify-content-between align-items-center"
-                      >
-                        <div class="rating-box gamboge-color">
-                          <ul>
-                            <li><i class="icon-star"></i></li>
-                            <li><i class="icon-star"></i></li>
-                            <li><i class="icon-star"></i></li>
-                            <li><i class="icon-star"></i></li>
-                            <li><i class="icon-star"></i></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="product-item">
-                <div class="single-product">
-                  <div class="product-img">
-                    <a href="single-product.html">
-                      <img
-                        v-lazy="'/images/product/medium-size/35.jpg'"
-                        alt="Quicky's Product Image"
-                      />
-                    </a>
-                    <span class="sticker">New</span>
-                    <span class="sticker-2">-16%</span>
-                    <div class="add-actions hover-right_side">
-                      <ul>
-                        <li
-                          class="quick-view-btn"
-                          data-toggle="modal"
-                          data-target="#exampleModalCenter"
-                        >
-                          <a
-                            href="javascript:void(0)"
-                            data-toggle="tooltip"
-                            data-placement="left"
-                            title="Quick View"
-                            ><i class="icon-magnifier"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a
-                            href="wishlist.html"
-                            data-toggle="tooltip"
-                            data-placement="left"
-                            title="Add To Wishlist"
-                            ><i class="icon-heart"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a
-                            href="compare.html"
-                            data-toggle="tooltip"
-                            data-placement="left"
-                            title="Add To Compare"
-                            ><i class="icon-refresh"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a
-                            href="cart.html"
-                            data-toggle="tooltip"
-                            data-placement="left"
-                            title="Add To cart"
-                            ><i class="icon-bag"></i
-                          ></a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="product-content bg-snow">
-                    <div class="product-desc_info">
-                      <div class="manufacture-product_top">
-                        <span>Lamp</span>
-                      </div>
-                      <h3 class="product-name">
-                        <a href="single-product.html">Fency Design Lamp</a>
-                      </h3>
-                      <div class="price-box">
-                        <span class="new-price ml-0">￥45.00</span>
-                      </div>
-                      <div
-                        class="review-area d-flex justify-content-between align-items-center"
-                      >
-                        <div class="rating-box gamboge-color">
-                          <ul>
-                            <li><i class="icon-star"></i></li>
-                            <li><i class="icon-star"></i></li>
-                            <li><i class="icon-star"></i></li>
-                            <li><i class="icon-star"></i></li>
-                            <li><i class="icon-star"></i></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="product-item">
-                <div class="single-product">
-                  <div class="product-img">
-                    <a href="single-product.html">
-                      <img
-                        v-lazy="'/images/product/medium-size/36.jpg'"
-                        alt="Quicky's Product Image"
-                      />
-                    </a>
-                    <div class="add-actions hover-right_side">
-                      <ul>
-                        <li
-                          class="quick-view-btn"
-                          data-toggle="modal"
-                          data-target="#exampleModalCenter"
-                        >
-                          <a
-                            href="javascript:void(0)"
-                            data-toggle="tooltip"
-                            data-placement="left"
-                            title="Quick View"
-                            ><i class="icon-magnifier"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a
-                            href="wishlist.html"
-                            data-toggle="tooltip"
-                            data-placement="left"
-                            title="Add To Wishlist"
-                            ><i class="icon-heart"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a
-                            href="compare.html"
-                            data-toggle="tooltip"
-                            data-placement="left"
-                            title="Add To Compare"
-                            ><i class="icon-refresh"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a
-                            href="cart.html"
-                            data-toggle="tooltip"
-                            data-placement="left"
-                            title="Add To cart"
-                            ><i class="icon-bag"></i
-                          ></a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="product-content bg-snow">
-                    <div class="product-desc_info">
-                      <div class="manufacture-product_top">
-                        <span>Lamp</span>
-                      </div>
-                      <h3 class="product-name">
-                        <a href="single-product.html">Wood Frame Lamp</a>
-                      </h3>
-                      <div class="price-box">
-                        <span class="new-price ml-0">￥65.00</span>
                       </div>
                       <div
                         class="review-area d-flex justify-content-between align-items-center"
@@ -452,16 +286,16 @@
                             }}
                         ]'
             >
-              <div class="product-item">
+              <div class="product-item" v-for="(item,index) in hotList" :key="index">
                 <div class="single-product">
                   <div class="product-img">
                     <a href="single-product.html">
                       <img
-                        v-lazy="'/images/product/medium-size/37.jpg'"
-                        alt="Quicky's Product Image"
+                       :src="'api/goodservice/' + item.image"
+                        alt="Product Image"
                       />
                     </a>
-                    <span class="sticker red-color">Sale</span>
+                    <span class="sticker red-color"></span>
                     <div class="add-actions hover-right_side">
                       <ul>
                         <li
@@ -510,179 +344,13 @@
                   <div class="product-content bg-snow">
                     <div class="product-desc_info">
                       <div class="manufacture-product_top">
-                        <span>Lamp</span>
+                        <span>热卖</span>
                       </div>
                       <h3 class="product-name">
-                        <a href="single-product.html">Glass Style Lamp</a>
+                        <a href="single-product.html">{{item.goodsName}}</a>
                       </h3>
                       <div class="price-box">
-                        <span class="new-price ml-0">￥95.00</span>
-                      </div>
-                      <div
-                        class="review-area d-flex justify-content-between align-items-center"
-                      >
-                        <div class="rating-box gamboge-color">
-                          <ul>
-                            <li><i class="icon-star"></i></li>
-                            <li><i class="icon-star"></i></li>
-                            <li><i class="icon-star"></i></li>
-                            <li><i class="icon-star"></i></li>
-                            <li><i class="icon-star"></i></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="product-item">
-                <div class="single-product">
-                  <div class="product-img">
-                    <a href="single-product.html">
-                      <img
-                        v-lazy="'/images/product/medium-size/38.jpg'"
-                        alt="Quicky's Product Image"
-                      />
-                    </a>
-                    <span class="sticker">New</span>
-                    <span class="sticker-2">-16%</span>
-                    <div class="add-actions hover-right_side">
-                      <ul>
-                        <li
-                          class="quick-view-btn"
-                          data-toggle="modal"
-                          data-target="#exampleModalCenter"
-                        >
-                          <a
-                            href="javascript:void(0)"
-                            data-toggle="tooltip"
-                            data-placement="left"
-                            title="Quick View"
-                            ><i class="icon-magnifier"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a
-                            href="wishlist.html"
-                            data-toggle="tooltip"
-                            data-placement="left"
-                            title="Add To Wishlist"
-                            ><i class="icon-heart"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a
-                            href="compare.html"
-                            data-toggle="tooltip"
-                            data-placement="left"
-                            title="Add To Compare"
-                            ><i class="icon-refresh"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a
-                            href="cart.html"
-                            data-toggle="tooltip"
-                            data-placement="left"
-                            title="Add To cart"
-                            ><i class="icon-bag"></i
-                          ></a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="product-content bg-snow">
-                    <div class="product-desc_info">
-                      <div class="manufacture-product_top">
-                        <span>Lamp</span>
-                      </div>
-                      <h3 class="product-name">
-                        <a href="single-product.html">Stenless Stell Lamp</a>
-                      </h3>
-                      <div class="price-box">
-                        <span class="new-price ml-0">￥39.28</span>
-                      </div>
-                      <div
-                        class="review-area d-flex justify-content-between align-items-center"
-                      >
-                        <div class="rating-box gamboge-color">
-                          <ul>
-                            <li><i class="icon-star"></i></li>
-                            <li><i class="icon-star"></i></li>
-                            <li><i class="icon-star"></i></li>
-                            <li><i class="icon-star"></i></li>
-                            <li><i class="icon-star"></i></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="product-item">
-                <div class="single-product">
-                  <div class="product-img">
-                    <a href="single-product.html">
-                      <img
-                        v-lazy="'/images/product/medium-size/39.jpg'"
-                        alt="Quicky's Product Image"
-                      />
-                    </a>
-                    <div class="add-actions hover-right_side">
-                      <ul>
-                        <li
-                          class="quick-view-btn"
-                          data-toggle="modal"
-                          data-target="#exampleModalCenter"
-                        >
-                          <a
-                            href="javascript:void(0)"
-                            data-toggle="tooltip"
-                            data-placement="left"
-                            title="Quick View"
-                            ><i class="icon-magnifier"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a
-                            href="wishlist.html"
-                            data-toggle="tooltip"
-                            data-placement="left"
-                            title="Add To Wishlist"
-                            ><i class="icon-heart"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a
-                            href="compare.html"
-                            data-toggle="tooltip"
-                            data-placement="left"
-                            title="Add To Compare"
-                            ><i class="icon-refresh"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a
-                            href="cart.html"
-                            data-toggle="tooltip"
-                            data-placement="left"
-                            title="Add To cart"
-                            ><i class="icon-bag"></i
-                          ></a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="product-content bg-snow">
-                    <div class="product-desc_info">
-                      <div class="manufacture-product_top">
-                        <span>Lamp</span>
-                      </div>
-                      <h3 class="product-name">
-                        <a href="single-product.html">Stylish Design Lamp</a>
-                      </h3>
-                      <div class="price-box">
-                        <span class="new-price ml-0">￥58.00</span>
+                        <span class="new-price ml-0">￥{{item.goodsPrice}}</span>
                       </div>
                       <div
                         class="review-area d-flex justify-content-between align-items-center"
@@ -731,13 +399,31 @@ export default {
           clickable: true
         },
        
-      }
+      },
+      characterList:[], //特色产品
+      hotList:[] //人气产品
     };
   },
   components: {
     BrandArea,
     Swiper,
     SwiperSlide
+  },
+  mounted(){
+    this.getAllGoods()
+  },
+  methods:{
+     getAllGoods() {
+      this.axios.get("goodservice/goods/findUpAll").then(value => {
+        if (value.code === 1) {
+          this.characterList = value.data.slice(0,6);
+          this.hotList = value.data.slice(5,8);
+          console.log(this.characterList);
+          console.log(this.hotList);
+          console.log(value.data)
+        }
+      });
+    }
   }
 };
 </script>

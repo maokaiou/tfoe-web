@@ -3,20 +3,20 @@
     <div class="wrapper">
       <div class="container">
         <div class="order-box">
-          <div class="order">
+          <div class="order" v-for="(item,index) in orderList" :key="index">
             <div class="order-title">
               <div class="item-info fl">
-                创建时间
+                {{item.createTime}}
                 <span>|</span>
-                用户
+                {{username}}
                 <span>|</span>
-                订单号：订单号
+                订单号：{{item.ordersId}}
                 <span>|</span>
                 在线支付
               </div>
               <div class="item-money fr">
                 <span>应付金额：</span>
-                <span class="money">6</span>
+                <span class="money">{{item.ordersPrice}}</span>
                 <span>元</span>
               </div>
             </div>
@@ -27,18 +27,17 @@
                     <img alt="" />
                   </div>
                   <div class="good-name">
-                    <div class="p-name">产品名字</div>
+                    <div class="p-name"></div>
                     <div class="p-money">
-                      价格+ 数量元
+                      {{item.ordersPrice}}元
                     </div>
                   </div>
                 </div>
               </div>
               <div class="good-state fr">
-                <a href="javascript:;">enen</a>
-              </div>
-              <div class="good-state fr">
-                <a href="javascript:;">订单状态</a>
+                <a href="javascript:;" v-if="item.status == 0">未支付</a>
+                <a href="javascript:;" v-if="item.status == 1">已支付</a>
+                
               </div>
             </div>
           </div>
@@ -76,6 +75,33 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data(){
+    return {
+      orderList:[]
+    }
+  },
+  mounted(){
+    this.showOrderList()
+  },
+  computed:{
+    username(){
+      return this.$store.state.username
+    }
+  },
+  methods:{
+    showOrderList(){
+      this.axios.get('/orderservice/orders/findAll').then((res)=>{
+        if(res.code == 1){
+          this.orderList = res.data
+          console.log(res.data)
+        }
+      })
+    }
+  }
+}
+</script>
 <style lang="scss">
 @import "./../assets/scss/mixin.scss";
 .order-list {

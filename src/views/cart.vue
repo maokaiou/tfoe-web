@@ -134,6 +134,7 @@ export default {
       this.axios.get("/userservice/cart/lookThroughCart").then(res => {
         if(res.code === 1) {
           this.cartlist = res.data;
+          console.log(res.data)
         }
       });
     }
