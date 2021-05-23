@@ -308,6 +308,7 @@ export default {
     }else if(res.code == 1){
         // console.log(res)
         this.$router.push('/orderPay/'+res.data.ordersId+'/'+res.data.ordersPrice)
+        // window.open('/orderPay/?orderId='+res.data.ordersId+'/'+res.data.ordersPrice,'_blank');
       }
       
     })

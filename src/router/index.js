@@ -12,6 +12,7 @@ import Message from "../views/message.vue";
 import OrderConfirm from "../views/orderConfirm.vue";
 import OrderPay from "../views/orderPay.vue";
 import OrderList from "../views/orderList.vue";
+import Pay from "../views/pay.vue";
 
 Vue.use(VueRouter);
 const routes = [
@@ -76,7 +77,13 @@ const routes = [
         name: "message",
         component: Message
       }
-    ]
+    ],
+    
+  },
+  {
+    path: "/pay/:id/:price",
+    name: "pay",
+    component: Pay
   }
 ];
 

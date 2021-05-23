@@ -8,11 +8,11 @@
             <div class="order-info">
               <h2>订单提交成功！去付款咯～</h2>
               <p>请在<span>30分</span>内完成支付, 超时后将取消订单</p>
-              <p>收货信息：{{ addressInfo }}</p>
+              <p>收货信息：湖南省衡阳市珠晖区</p>
             </div>
             <div class="order-total">
               <p>
-                应付总额：<span>{{ payment }}</span
+                应付总额：<span>{{ orderAllPrice }}</span
                 >元
               </p>
               <p>
@@ -31,14 +31,14 @@
             </div>
             <div class="item">
               <div class="detail-title">收货信息：</div>
-              <div class="detail-info">{{ addressInfo }}</div>
+              <div class="detail-info">湖南省衡阳市珠晖区湖南工学院</div>
             </div>
             <div class="item good">
               <div class="detail-title">商品名称：</div>
               <div class="detail-info">
                 <ul>
-                  <li v-for="(item, index) in orderDetail" :key="index">
-                    <img v-lazy="item.productImage" />{{ item.productName }}
+                  <li v-for="(item, index) in orderInfor" :key="index">
+                    {{ item.goodsName }}
                   </li>
                 </ul>
               </div>
@@ -55,9 +55,13 @@
             <p>支付平台</p>
             <div
               class="pay pay-ali"
-              :class="{ checked: payType == 1 }"
-              @click="paySubmit(1)"
+              @click="orderPay"
             ></div>
+          </div>
+          <div class="erweima">
+            <div v-html="content" class="form">
+                nihao
+            </div>
           </div>
         </div>
       </div>
@@ -68,16 +72,39 @@
 export default{
   data(){
     return {
-
+      orderId:0,
+      orderAllPrice:0,
+      showDetail:true,
+      orderInfor:[] ,// 订单详情
+      content:''
     }
   },
   mounted(){
-
+    this.getOrderInfor()
+    this.orderDetail()
   },
   methods:{
-    
+
     getOrderInfor(){
-      this.axios.post('')
+      console.log(this.$route.params.id)
+      this.orderId = this.$route.params.id
+      this.orderAllPrice = this.$route.params.price
+    },
+    orderDetail(){
+      this.axios.get('/goodservice/goods/findOrderGoods',{
+        params:{
+          orderId : this.orderId
+        }
+      }).then((res)=>{
+        console.log(res)
+        console.log("Nihao1")
+        if(res.code == 1){
+          this.orderInfor = res.data
+        }
+      })
+    },
+    orderPay(){
+       this.$router.push('/pay/'+this.orderId+'/'+this.orderAllPrice)
     }
   }
 }
