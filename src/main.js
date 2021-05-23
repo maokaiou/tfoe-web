@@ -6,7 +6,7 @@ import VueAxios from "vue-axios";
 import VueLazyLoad from "vue-lazyload"
 // import VueCookie from "vue-cookie";
 import store from "./store";
-import { Message, MessageBox, Button} from 'element-ui'
+import { Message, MessageBox, Button, Dialog, Form,Input,FormItem} from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 
 axios.defaults.baseURL = "/api";
@@ -34,7 +34,11 @@ Vue.use(VueAxios,axios);
 Vue.use(VueLazyLoad,{
   loading:"./assets/loading-svg/loading-cylon.svg"
 });
-Vue.use(Button)
+Vue.use(Button);
+Vue.use(Dialog);
+Vue.use(Form);
+Vue.use(Input);
+Vue.use(FormItem)
 // Vue.use(VueCookie);
 Vue.prototype.$message = Message;
 Vue.prototype.$msgbox = MessageBox;

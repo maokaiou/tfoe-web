@@ -68,7 +68,7 @@ const routes = [
       },
       {
         name: "orderPay",
-        path: "/orderPay",
+        path: "/orderPay/:id/:price",
         component: OrderPay
       },
       {

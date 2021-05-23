@@ -58,17 +58,31 @@
               :class="{ checked: payType == 1 }"
               @click="paySubmit(1)"
             ></div>
-            <div
-              class="pay pay-wechat"
-              :class="{ checked: payType == 2 }"
-              @click="paySubmit(2)"
-            ></div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+<script>
+export default{
+  data(){
+    return {
+
+    }
+  },
+  mounted(){
+
+  },
+  methods:{
+    
+    getOrderInfor(){
+      this.axios.post('')
+    }
+  }
+}
+</script>
+
 <style lang="scss">
 .order-pay {
   .wrapper {

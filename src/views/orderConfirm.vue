@@ -48,7 +48,7 @@
           <div class="item-address">
             <h2 class="addr-title">收货地址</h2>
             <div class="addr-list clearfix">
-              <div class="addr-info" v-for="(item,index) in allAddress" :key="index">
+              <div class="addr-info" v-for="(item,index) in allAddress" :key="index" :class="{'checked':index == checkIndex}" @click="checkIndex=index">
                 <h2>{{item.name}}</h2>
                 <div class="phone">{{item.phone}}</div>
                 <div class="street">
@@ -75,10 +75,33 @@
                 </div>
               </div>
               <!-- 新增地址 -->
-              <el-button type="text" @click="open" class="addr-add">
+              <el-button type="text" @click="addAddressVisible = true" class="addr-add">
                 <div class="icon-add"></div>
                 <div>添加新地址</div>
               </el-button>
+              <!-- 新增地址对话框 -->
+                  <el-dialog
+                  title="添加地址"
+                  :visible.sync="addAddressVisible"
+                  width="50%">
+                  <!-- 对话框主题 -->
+                  <el-form :model="addressForm" :rules="addressRules" ref="addressFormRef" label-width="80px" class="demo-ruleForm">
+                    <el-form-item label="收件人" prop="name">
+                      <el-input v-model="addressForm.name"></el-input>
+                    </el-form-item>
+                    <el-form-item label="手机号" prop="phone">
+                      <el-input v-model="addressForm.phone"></el-input>
+                    </el-form-item>
+                    <el-form-item label="地址" prop="address">
+                      <el-input v-model="addressForm.address"></el-input>
+                    </el-form-item>
+                  </el-form>
+                  <!-- 对话框底部 -->
+                  <span slot="footer" class="dialog-footer">
+                    <el-button @click="addAddressVisible = false">取 消</el-button>
+                    <el-button type="primary" @click="submitAddress">确 定</el-button>
+                  </span>
+                </el-dialog>
             </div>
           </div>
           <div class="item-good">
@@ -131,7 +154,7 @@
           </div>
           <div class="btn-group">
             <a href="/cart" class="btn btn-default btn-large">返回购物车</a>
-            <a href="/orderPay" class="btn btn-large">去结算</a>
+            <a class="btn btn-large" @click="jumpToPay">去结算</a>
           </div>
         </div>
       </div>
@@ -172,7 +195,29 @@ export default {
        allAddress:[] ,// 所有收货地址
        cartlist:[], // 购物车列表
        counutPrice:0,
-       countsGoods:0
+       countsGoods:0,
+       checkIndex:0,//当前收货地址选中索引
+       dialogVisible: false,
+       addAddressVisible:false, // 控制添加地址对话框的显示和隐藏
+       addressForm:{
+        name:'',
+        phone:'',
+        address:''
+       },
+       addressRules:{
+          name: [
+            { required: true, message: '请输入收件人', trigger: 'blur' },
+            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+          ],
+          phone:[
+            { required: true, message: '请输入手机号', trigger: 'blur' },
+            { min: 11, max: 11, message: '输入正确手机号', trigger: 'blur' }
+          ],
+          address:[
+            { required: true, message: '请输入收货地址', trigger: 'blur' },
+           
+          ]
+       }
     };
   },
   components: {
@@ -187,8 +232,26 @@ export default {
       this.showEditModal = true;
       console.log("编辑")
    },
+   handleClose(done) {
+        this.$confirm('确认关闭？')
+          .then(() => {
+            done();
+          })
+          .catch(() => {});
+      },
    submitAddress(){
-     console.log('提交地址')
+     this.axios.post('/userservice/address/addAddress',{
+          name:"mko",
+          phone:this.addressForm.phone,
+         address:this.addressForm.address,
+         status:0
+     }).then((res)=>{
+       console.log(res)
+       if(res.code === 1){
+         this.showAllAddress()
+       }
+     })
+    this.addAddressVisible = false // 关闭弹框
    },
    // 获取购物车商品
    getcartList() {
@@ -202,24 +265,7 @@ export default {
         }
       });
     },
-   open(){
-        this.$prompt('请输入邮箱', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          inputPattern: /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
-          inputErrorMessage: '邮箱格式不正确'
-        }).then(({ value }) => {
-          this.$message({
-            type: 'success',
-            message: '你的邮箱是: ' + value
-          });
-        }).catch(() => {
-          this.$message({
-            type: 'info',
-            message: '取消输入'
-          });       
-        });
-   },
+  
    sub(){
      console.log("关闭")
      this.showEditModal= false
@@ -246,6 +292,26 @@ export default {
          console.log(res.data)
        }
      })
+   },
+   // 结算
+  jumpToPay(){
+    // console.log("跳转结算")
+    // console.log(this.allAddress[this.checkIndex].addressId)
+    var address_id = this.allAddress[this.checkIndex].addressId
+    this.axios.get('/orderservice/orders/createOrders',{
+      params:{
+        address_id:address_id
+      }
+    }).then((res)=>{
+    if( res.code == 0){
+      this.$message.warning("购物车不能为空")
+    }else if(res.code == 1){
+        // console.log(res)
+        this.$router.push('/orderPay/'+res.data.ordersId+'/'+res.data.ordersPrice)
+      }
+      
+    })
+    // this.$router.push('/orderPay')
    }
   },
 };
